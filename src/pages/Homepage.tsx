@@ -1,8 +1,8 @@
 import { Flex, FloatButton, Typography } from 'antd';
 import { SearchTourForm } from '@/features/homepage/components/SearchTourForm.tsx';
-import { PopularTourList } from '@/features/homepage/components/PopularTourList.tsx';
 import { FeaturedSection } from '@/features/homepage/components/FeaturedSection.tsx';
 import { FAQSection } from '@/features/homepage/components/FAQSection.tsx';
+import { BusCompaniesSection } from '@/features/homepage/components/BusCompaniesSection';
 
 const { Text, Title } = Typography;
 
@@ -22,19 +22,15 @@ export const Homepage = () => {
             Tìm chuyến xe của bạn
           </Title>
           <Text className="text-2xl text-gray-200">
-            Tìm kiếm chuyến xe, loại xe, khu vực
+            Nhanh chóng, tiện lợi và dễ dàng
           </Text>
           <SearchTourForm />
         </Flex>
       </div>
       <Flex className="mx-auto my-10 max-w-4xl" vertical gap={40}>
-        {/*<PopularTourList />*/}
+        {/* <PopularTourList /> */}
         <FeaturedSection />
-
-        {/*  Clients Comments */}
-        {/*  Download App*/}
-        {/*  Sponsort list*/}
-        {/*  FAQ*/}
+        <BusCompaniesSection />
         <FAQSection />
         <FloatButton.BackTop />
       </Flex>

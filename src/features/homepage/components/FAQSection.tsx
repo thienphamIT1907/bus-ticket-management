@@ -69,13 +69,9 @@ export const FAQSection = () => {
   };
 
   return (
-   <Flex vertical gap={10}>
-     <TableTitle title="Các câu hỏi thường gặp" className="text-2xl"/>
-     <Collapse
-       items={items}
-       onChange={onChange}
-       size="large"
-     />
-   </Flex>
+    <Flex vertical gap={10}>
+      <TableTitle title="Các câu hỏi thường gặp" className="text-2xl" />
+      <Collapse items={items} onChange={onChange} size="large" />
+    </Flex>
   );
 };

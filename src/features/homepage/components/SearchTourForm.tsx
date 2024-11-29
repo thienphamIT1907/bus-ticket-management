@@ -1,18 +1,11 @@
 import { Button, Flex, Form, Tooltip } from 'antd';
 import { StartPointSelector } from '@/features/homepage/components/StartPointSelector.tsx';
 import { EndPointSelector } from '@/features/homepage/components/EndPointSelector.tsx';
-import type { Rule } from 'antd/es/form';
 import { useState } from 'react';
 import { cn } from '@/libs/tailwind.ts';
 import { SearchTour } from '@/shared/types';
 
 const { useForm, Item } = Form;
-
-const rules: Rule[] = [
-  {
-    required: true,
-  },
-];
 
 export const SearchTourForm = () => {
   const [form] = useForm<SearchTour>();
@@ -47,10 +40,10 @@ export const SearchTourForm = () => {
       onFieldsChange={handleFormChange}
     >
       <Flex gap={6} align="center" justify="center">
-        <Item className="w-full" required name="startPoint" rules={rules}>
+        <Item className="w-full" required name="startPoint">
           <StartPointSelector />
         </Item>
-        <Item className="w-full" name="endPoint" rules={rules}>
+        <Item className="w-full" name="endPoint">
           <EndPointSelector />
         </Item>
         <Tooltip title={disabled && 'Vui lòng điền đủ thông tin!'}>

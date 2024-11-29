@@ -1,15 +1,17 @@
-import {PUBLIC_ROUTES} from '@/routes/public';
-import {PRIVATE_ROUTES} from '@/routes/private';
-import { Homepage } from '@/pages';
+import { PUBLIC_ROUTES } from '@/routes/public';
 import { PublicLayout } from '@/layouts/PublicLayout';
-import { Children } from 'react';
+import { PrivateLayout } from '@/layouts/PrivateLayout.tsx';
+import { PRIVATE_ROUTES } from '@/routes/private.tsx';
 
-export const ROUTES  = [
- {
-  path: '/',
-  element: <PublicLayout />,
-  children: PUBLIC_ROUTES
-  
- }
-
-]
+export const ROUTES = [
+  {
+    path: '/',
+    element: <PublicLayout />,
+    children: PUBLIC_ROUTES,
+  },
+  {
+    path: '/dashboard',
+    element: <PrivateLayout />,
+    children: PRIVATE_ROUTES,
+  },
+];

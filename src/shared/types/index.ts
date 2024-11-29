@@ -1,3 +1,17 @@
+import { ReactNode } from 'react';
+
+export interface BasicLayoutProps {
+  children: ReactNode;
+}
+
+export interface SideBarMenu {
+  id: number;
+  Icon: ReactNode;
+  title: string;
+  isActive: boolean;
+  href: string;
+}
+
 export type ProvinceItem = {
   id: string;
   name: string;
@@ -16,4 +30,4 @@ export type FeaturedItem = {
 export type SearchTour = {
   startPoint: string;
   endPoint: string;
-}
+};

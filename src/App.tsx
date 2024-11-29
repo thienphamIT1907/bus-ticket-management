@@ -1,4 +1,3 @@
-import { Homepage } from '@/pages';
 import '../src/shared/styles/index.css';
 import { Outlet } from 'react-router-dom';
 

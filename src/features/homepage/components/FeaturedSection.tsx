@@ -7,7 +7,7 @@ const featureds: FeaturedItem[] = [
   {
     id: 1,
     title: 'Hơn 10.000',
-    subTitle: 'khách hàng trên cả nước',
+    subTitle: 'Khách hàng trên cả nước',
     image: '/assets/images/clients.svg',
   },
   {
@@ -33,7 +33,7 @@ export const FeaturedSection = () => {
             vertical
             align="center"
             justify="space-between"
-            className="h-full min-h-64 flex-1 rounded-2xl border border-solid border-gray-200 p-4"
+            className="h-full min-h-64 flex-1 rounded-2xl border border-solid border-gray-200 p-4 bg-white"
           >
             <Image
               preview={false}

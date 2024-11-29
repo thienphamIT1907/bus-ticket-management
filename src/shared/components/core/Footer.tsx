@@ -11,13 +11,13 @@ export const Footer = () => {
           <Flex vertical>
             <Text className="font-bold text-white">Thông tin thành viên</Text>
             <Flex vertical className="mt-2" gap={4}>
-              <Text className="text-sm font-light text-gray-200">
+              <Text className="cursor-pointer text-sm font-light text-gray-200 hover:underline">
                 Phạm Anh Thiện
               </Text>
-              <Text className="text-sm font-light text-gray-200">
+              <Text className="cursor-pointer text-sm font-light text-gray-200 hover:underline">
                 Võ Thanh Hải
               </Text>
-              <Text className="text-sm font-light text-gray-200">
+              <Text className="cursor-pointer text-sm font-light text-gray-200 hover:underline">
                 Đỗ Xuân Anh
               </Text>
             </Flex>
@@ -27,10 +27,12 @@ export const Footer = () => {
           <Flex vertical>
             <Text className="text-md font-bold text-white">Về CS447Bus</Text>
             <Flex vertical className="mt-2" gap={4}>
-              <Text className="text-sm font-light text-gray-200">
+              <Text className="cursor-pointer text-sm font-light text-gray-200 hover:underline">
                 Về chúng tôi
               </Text>
-              <Text className="text-sm font-light text-gray-200">Liên hệ</Text>
+              <Text className="cursor-pointer text-sm font-light text-gray-200 hover:underline">
+                Liên hệ
+              </Text>
             </Flex>
           </Flex>
         </Col>
@@ -38,11 +40,15 @@ export const Footer = () => {
           <Flex vertical>
             <Text className="text-md font-bold text-white">Dịch vụ</Text>
             <Flex vertical className="mt-2" gap={4}>
-              <Text className="text-sm font-light text-gray-200">
+              <Text className="cursor-pointer text-sm font-light text-gray-200 hover:underline">
                 Đánh giá chất lượng
               </Text>
-              <Text className="text-sm font-light text-gray-200">Tra cứu</Text>
-              <Text className="text-sm font-light text-gray-200">Góp ý</Text>
+              <Text className="cursor-pointer text-sm font-light text-gray-200 hover:underline">
+                Tra cứu
+              </Text>
+              <Text className="cursor-pointer text-sm font-light text-gray-200 hover:underline">
+                Góp ý
+              </Text>
             </Flex>
           </Flex>
         </Col>

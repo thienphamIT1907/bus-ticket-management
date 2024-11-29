@@ -1,1 +1,2 @@
-export * from './AntdNotification'
+export * from './AntdNotification';
+export * from './SidebarProvider';

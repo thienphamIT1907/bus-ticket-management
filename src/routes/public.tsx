@@ -1,27 +1,13 @@
-import { Homepage } from "@/pages";
+import { Homepage } from '@/pages';
+import { BusCompaniesDetailPage } from '@/pages/BusCompaniesDetailPage';
 
 export const PUBLIC_ROUTES = [
-    {
-        path: "/",
-        element: <Homepage />,
-    }
-]
-   
-    // children: [
-    //   {
-    //     path: "/login",
-    //     element: <div>login</div>,
-    //   },
-    //   {
-    //     path: "/portal",
-    //     element: <div>portal</div>,
-    //   },
-    //   {
-    //     path: "/info",
-    //     element: <div>info</div>,
-    //   },
-    //   {
-    //     path: "/journey",
-    //     element: <div>journey</div>,
-    //   },
-    // ],
+  {
+    path: '/',
+    element: <Homepage />,
+  },
+  {
+    path: '/bus-company/:id',
+    element: <BusCompaniesDetailPage />,
+  },
+];

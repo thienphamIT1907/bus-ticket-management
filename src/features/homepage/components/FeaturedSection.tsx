@@ -1,4 +1,4 @@
-import { FeaturedItem } from '@/shared/types';
+import { FeaturedItem } from '@/features/homepage/types';
 import { Flex, Image, Typography } from 'antd';
 
 const { Text } = Typography;
@@ -33,7 +33,7 @@ export const FeaturedSection = () => {
             vertical
             align="center"
             justify="space-between"
-            className="h-full min-h-64 flex-1 rounded-2xl border border-solid border-gray-200 p-4 bg-white"
+            className="h-full min-h-64 flex-1 rounded-2xl border border-solid border-gray-200 bg-white p-4"
           >
             <Image
               preview={false}

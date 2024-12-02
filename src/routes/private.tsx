@@ -3,11 +3,10 @@ import { TourManagementPage } from '@/pages/TourManagementPage.tsx';
 import { DriverManagementPage } from '@/pages/DriverManagementPage.tsx';
 import { VehicleManagementPage } from '@/pages/VehicleManagementPage.tsx';
 
-import { IoPieChartOutline } from 'react-icons/io5';
 import { FaRegMap } from 'react-icons/fa';
 import { GrUserPolice } from 'react-icons/gr';
 import { TbBus } from 'react-icons/tb';
-import { GrPieChart } from "react-icons/gr";
+import { GrPieChart } from 'react-icons/gr';
 
 export const PRIVATE_ROUTES = [
   {

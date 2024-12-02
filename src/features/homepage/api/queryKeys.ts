@@ -1,3 +1,3 @@
 export const QueryKeys = {
-  Provinces: ['provinces'] as const,
-};
+  Provinces: 'provinces',
+} as const;

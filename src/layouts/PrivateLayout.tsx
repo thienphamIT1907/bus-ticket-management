@@ -10,7 +10,10 @@ export const PrivateLayout = () => {
 
   useEffect(() => {
     console.log('run');
-    if (location.pathname === '/dashboard') {
+    if (
+      location.pathname === '/dashboard' ||
+      location.pathname === '/dashboard/'
+    ) {
       navigate('/dashboard/summary');
     }
   }, []);

@@ -1,5 +1,5 @@
-import { Homepage } from '@/pages';
 import { BusCompaniesDetailPage } from '@/pages/BusCompaniesDetailPage';
+import { Homepage } from '@/pages/Homepage';
 
 export const PUBLIC_ROUTES = [
   {

@@ -3,7 +3,7 @@ import { StartPointSelector } from '@/features/homepage/components/StartPointSel
 import { EndPointSelector } from '@/features/homepage/components/EndPointSelector.tsx';
 import { useState } from 'react';
 import { cn } from '@/libs/tailwind.ts';
-import { SearchTour } from '@/shared/types';
+import { SearchTour } from '@/features/homepage/types';
 
 const { useForm, Item } = Form;
 

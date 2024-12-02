@@ -1,5 +1,4 @@
 import { Empty, Select, SelectProps } from 'antd';
-import { ProvinceItem } from '@/shared/types';
 import { debounce } from 'lodash-es';
 import { useGetProvinces } from '@/features/homepage/hooks/useGetProvinces.ts';
 import { useState } from 'react';
@@ -31,9 +30,9 @@ export const StartPointSelector = ({ ...props }: SelectProps) => {
       defaultActiveFirstOption={false}
       filterOption={false}
       className="w-full"
-      options={provinces?.map((item: ProvinceItem) => ({
-        label: item.name,
-        value: item?.name,
+      options={provinces?.map(({ name }) => ({
+        label: name,
+        value: name,
       }))}
       showSearch
       allowClear

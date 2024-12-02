@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const axiosRequest = axios.create({
+const axiosInstance = axios.create({
   baseURL: '',
   timeout: 10000,
   headers: {
@@ -8,4 +8,4 @@ const axiosRequest = axios.create({
   },
 });
 
-export default axiosRequest;
+export default axiosInstance;

@@ -5,7 +5,6 @@ function App() {
 
   return (
     <div className='bg-red-300 rounded-md p-4'>
-      layout
       <Outlet />
     </div>
   )

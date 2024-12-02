@@ -7,4 +7,24 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom antd input */
+*::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+*::-webkit-scrollbar-track {
+  border-radius: 3px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #0e172a;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #0e172a;
+}
+
+.scrollbar-gutter {
+  scrollbar-gutter: stable both-edges;
+}

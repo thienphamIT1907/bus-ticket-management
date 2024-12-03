@@ -1,18 +1,32 @@
 import { Button, Flex, Form, Tooltip } from 'antd';
 import { StartPointSelector } from '@/features/homepage/components/StartPointSelector.tsx';
 import { EndPointSelector } from '@/features/homepage/components/EndPointSelector.tsx';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { cn } from '@/libs/tailwind.ts';
 import { SearchTour } from '@/features/homepage/types';
+import { useGetProvinces } from '@/features/homepage/hooks/useGetProvinces';
 
 const { useForm, Item } = Form;
 
 export const SearchTourForm = () => {
   const [form] = useForm<SearchTour>();
   const [disabled, setDisabled] = useState<boolean>(true);
+  const [query, setQuery] = useState('');
+  const {
+    data: provinces,
+    isLoading,
+    refetch,
+  } = useGetProvinces({
+    page: 0,
+    size: 100,
+    query,
+  });
+
+  useEffect(() => {
+    refetch();
+  }, [query]);
 
   const onFinish = () => {
-    console.log(form.getFieldsValue());
     // form
     //   .validateFields()
     //   .then(() => {
@@ -25,6 +39,8 @@ export const SearchTourForm = () => {
 
   const handleFormChange = () => {
     const formValue = form.getFieldsValue();
+    setQuery(formValue?.endPoint);
+
     if (formValue?.endPoint && formValue.startPoint) {
       setDisabled(false);
     } else {
@@ -41,10 +57,18 @@ export const SearchTourForm = () => {
     >
       <Flex gap={6} align="center" justify="center">
         <Item className="w-full" required name="startPoint">
-          <StartPointSelector />
+          <StartPointSelector
+            isLoading={isLoading}
+            provinces={provinces}
+            setQuery={setQuery}
+          />
         </Item>
         <Item className="w-full" name="endPoint">
-          <EndPointSelector />
+          <EndPointSelector
+            isLoading={isLoading}
+            provinces={provinces}
+            setQuery={setQuery}
+          />
         </Item>
         <Tooltip title={disabled && 'Vui lòng điền đủ thông tin!'}>
           <Button

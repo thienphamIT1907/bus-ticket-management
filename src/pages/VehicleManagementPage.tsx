@@ -16,7 +16,6 @@ export const VehicleManagementPage = () => {
   useEffect(() => {
     async function getTodos() {
       const { data } = await supabase.from('Test').select();
-      console.log({ data });
     }
 
     getTodos();

@@ -1,17 +1,20 @@
 import { Empty, Select, SelectProps } from 'antd';
 import { debounce } from 'lodash-es';
-import { useGetProvinces } from '@/features/homepage/hooks/useGetProvinces.ts';
-import { useState } from 'react';
 import { BiTargetLock } from 'react-icons/bi';
+import { ProvinceItem } from '@/features/homepage/types';
 
-export const StartPointSelector = ({ ...props }: SelectProps) => {
-  const [query, setQuery] = useState('');
-  const { data: provinces, isLoading } = useGetProvinces({
-    page: 0,
-    size: 100,
-    query,
-  });
+type StartPointSelectorProps = {
+  provinces?: ProvinceItem[];
+  isLoading: boolean;
+  setQuery: (query: string) => void;
+} & SelectProps;
 
+export const StartPointSelector = ({
+  provinces,
+  setQuery,
+  isLoading,
+  ...props
+}: StartPointSelectorProps) => {
   const handleDropdownVisibleChange = (open: boolean) => {
     if (open) {
       setQuery('');
@@ -34,6 +37,7 @@ export const StartPointSelector = ({ ...props }: SelectProps) => {
         label: name,
         value: name,
       }))}
+      disabled={isLoading}
       showSearch
       allowClear
       onSearch={handleSearch}

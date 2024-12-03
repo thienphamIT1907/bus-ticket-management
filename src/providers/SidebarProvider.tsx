@@ -12,7 +12,6 @@ export const SidebarContext = createContext<SidebarContextValue | {}>({});
 
 const SidebarProvider = ({ children }: BasicLayoutProps) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
-  console.log({ isCollapsed });
   return (
     <SidebarContext.Provider
       value={{

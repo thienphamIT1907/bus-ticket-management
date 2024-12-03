@@ -1,4 +1,12 @@
+import Icon from '@ant-design/icons';
+import { GetProps } from 'antd';
 import { ReactNode } from 'react';
+
+export type CustomIconProps = Partial<GetProps<typeof Icon>>;
+
+export type IconWrapperProps = {
+  svgComponent: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+};
 
 export type MonthsInYear =
   | 'January'

@@ -1,5 +1,4 @@
 import { Image } from 'antd';
-import { RiUser3Line } from 'react-icons/ri';
 import { FiUser } from 'react-icons/fi';
 export const UserAvatar = () => {
   const hasAvatar = true;

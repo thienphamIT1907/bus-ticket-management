@@ -4,7 +4,7 @@ import {
   fetchProvinces,
   FetchProvincesParams,
 } from '@/features/homepage/api/provinces';
-import { ProvinceItem } from '@/shared/types';
+import { ProvinceItem } from '@/features/homepage/types';
 
 export const useGetProvinces = ({
   page = 1,

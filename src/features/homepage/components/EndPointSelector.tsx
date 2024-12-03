@@ -1,18 +1,20 @@
 import { Empty, Select, SelectProps } from 'antd';
-import { ProvinceItem } from '@/shared/types';
 import { debounce } from 'lodash-es';
-import { useGetProvinces } from '@/features/homepage/hooks/useGetProvinces.ts';
-import { useState } from 'react';
 import { IoLocationOutline } from 'react-icons/io5';
+import { ProvinceItem } from '@/features/homepage/types';
 
-export const EndPointSelector = ({ ...props }: SelectProps) => {
-  const [query, setQuery] = useState('');
-  const { data: provinces, isLoading } = useGetProvinces({
-    page: 0,
-    size: 100,
-    query,
-  });
+type EndPointSelectorProps = {
+  provinces?: ProvinceItem[];
+  isLoading: boolean;
+  setQuery: (query: string) => void;
+} & SelectProps;
 
+export const EndPointSelector = ({
+  provinces,
+  setQuery,
+  isLoading,
+  ...props
+}: EndPointSelectorProps) => {
   const handleDropdownVisibleChange = (open: boolean) => {
     if (open) {
       setQuery('');
@@ -35,6 +37,7 @@ export const EndPointSelector = ({ ...props }: SelectProps) => {
         label: item.name,
         value: item?.name,
       }))}
+      disabled={isLoading}
       showSearch
       allowClear
       onSearch={handleSearch}

@@ -9,7 +9,6 @@ export const PrivateLayout = () => {
   const location = useLocation();
 
   useEffect(() => {
-    console.log('run');
     if (
       location.pathname === '/dashboard' ||
       location.pathname === '/dashboard/'

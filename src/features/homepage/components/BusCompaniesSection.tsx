@@ -17,7 +17,7 @@ const mockData = [
   {
     id: '3',
     image:
-      'https://scontent.fdad1-4.fna.fbcdn.net/v/t39.30808-6/434639748_122134457600142830_7881299624963757896_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=u0nkrGUJdykQ7kNvgFXbJB-&_nc_zt=23&_nc_ht=scontent.fdad1-4.fna&_nc_gid=A8NQBmvNIvtmbO__MGWXL6P&oh=00_AYBBTQczkzDfHECKFz7f_G7ymCWi2nFbHxHmk-0wQ-wlRQ&oe=674DBA69',
+      'https://xekhachkinhdienhong.com/wp-content/uploads/2022/09/logo-kinhdienhong.jpg',
     name: 'Tài Phát Limousine',
   },
   {

@@ -254,10 +254,6 @@ const ticketInfo = {
 };
 
 export const BusCompaniesDetailPage = () => {
-  const params = useParams();
-
-  console.log({ params });
-
   return (
     <Flex className="mx-auto my-10 max-w-4xl" vertical gap={40}>
       <Flex align="center" gap={10}>

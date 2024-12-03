@@ -65,7 +65,6 @@ const items: CollapseProps['items'] = [
 
 export const FAQSection = () => {
   const onChange = (key: string | string[]) => {
-    console.log(key);
   };
 
   return (

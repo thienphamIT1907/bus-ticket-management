@@ -25,7 +25,7 @@ export const VehicleManagementPage = () => {
     <>
       <Flex>
         <Flex justify="space-between" className="w-full">
-          <TableTitle title="Quản lý phương tiện" className="text-2xl" />
+          <TableTitle title="Quản Lý Phương Tiện" className="text-2xl" />
           <Button
             className="bg-[#d84f57] px-6 py-2 text-white"
             size="large"

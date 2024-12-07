@@ -33,3 +33,8 @@ export interface SideBarMenu {
   isActive: boolean;
   href: string;
 }
+
+export type LoginFormFields = {
+  email: string;
+  password: string;
+};

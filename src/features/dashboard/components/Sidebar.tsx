@@ -1,13 +1,10 @@
-import {
-  SidebarContext,
-  SidebarContextValue,
-} from '@/providers/SidebarProvider';
 import { useContext } from 'react';
 import { cn } from '@/libs/tailwind.ts';
 import { SIDEBAR_ROUTES } from '@/routes/private.tsx';
 import SidebarItem from '@/features/dashboard/components/SidebarItem.tsx';
 import { Flex, Typography } from 'antd';
 import { Logo } from '@/shared/components/core/Logo.tsx';
+import { SidebarContext, SidebarContextValue } from '@/providers';
 
 const { Text } = Typography;
 
@@ -24,7 +21,7 @@ const SidebarMenu = () => {
       )}
     >
       <div>
-        <Flex gap={6} justify="flex-start" align="center" className='px-3'>
+        <Flex gap={6} justify="flex-start" align="center" className="px-3">
           <Logo className="size-10 text-[#c35959]" />
           <Text
             className={cn(

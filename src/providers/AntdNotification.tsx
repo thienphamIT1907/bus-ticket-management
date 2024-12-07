@@ -1,4 +1,4 @@
-import { notification } from 'antd';
+import { ConfigProvider, notification } from 'antd';
 import React, { createContext } from 'react';
 
 export const NotificationContext = createContext({});
@@ -11,9 +11,17 @@ export const AntdNotificationProvider = ({
   const [antdNotificationApi, contextHolder] = notification.useNotification();
 
   return (
-    <NotificationContext.Provider value={antdNotificationApi}>
-      {contextHolder}
-      {children}
-    </NotificationContext.Provider>
+    <ConfigProvider
+      theme={{
+        token: {
+          colorPrimary: '#c35959',
+        },
+      }}
+    >
+      <NotificationContext.Provider value={antdNotificationApi}>
+        {contextHolder}
+        {children}
+      </NotificationContext.Provider>
+    </ConfigProvider>
   );
 };

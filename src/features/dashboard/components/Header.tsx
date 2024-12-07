@@ -3,27 +3,15 @@ import {
   SidebarContext,
   SidebarContextValue,
 } from '@/providers/SidebarProvider';
-import { upperCaseFirstLetter } from '@/shared/utils';
 import { AiOutlineMenuFold } from 'react-icons/ai';
 import { useContext } from 'react';
-import { useLocation } from 'react-router-dom';
 import { cn } from '@/libs/tailwind';
+import { useSession } from '@/features/auth/hooks/useSession';
 
 const Header = () => {
-  const { pathname } = useLocation();
   const { setIsCollapsed, isCollapsed } = useContext(
     SidebarContext,
   ) as SidebarContextValue;
-
-  const generateHeaderByCurrentPathname = () => {
-    let headerPrefix = 'Summary';
-    const splittedPath: string = pathname.split('/')[1];
-    if (splittedPath !== '') {
-      headerPrefix = upperCaseFirstLetter(splittedPath);
-    }
-
-    return `My ${headerPrefix} Board`;
-  };
 
   const handleClickCollapseSidebar = () => {
     setIsCollapsed(!isCollapsed);
@@ -41,10 +29,7 @@ const Header = () => {
             size={20}
           />
         </button>
-        <h2 className="xs:min-w-[200px] text-lg font-medium">
-          {/* {generateHeaderByCurrentPathname()} */}
-          Dashboard
-        </h2>
+        <h2 className="xs:min-w-[200px] text-lg font-medium">Dashboard</h2>
       </div>
       <UserAvatar />
     </div>

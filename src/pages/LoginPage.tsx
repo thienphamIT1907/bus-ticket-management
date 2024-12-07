@@ -29,7 +29,7 @@ export const LoginPage = () => {
           <div className="hidden h-screen w-1/2 lg:block">
             <img
               src="/assets/images/login-cover-2.avif"
-              alt="Placeholder Image"
+              alt="cover"
               className="h-full w-full object-cover"
             />
           </div>

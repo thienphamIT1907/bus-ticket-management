@@ -1,12 +1,11 @@
-import { SideBarMenu } from '@/shared/types';
+import type { SideBarMenu } from '@/shared/types';
 import { TourManagementPage } from '@/pages/TourManagementPage.tsx';
 import { DriverManagementPage } from '@/pages/DriverManagementPage.tsx';
 import { VehicleManagementPage } from '@/pages/VehicleManagementPage.tsx';
 import { BusCompaniesManagementPage } from '@/pages/BusCompaniesManagementPage';
 import { FaRegMap } from 'react-icons/fa';
-import { GrUserPolice } from 'react-icons/gr';
+import { GrUserPolice, GrPieChart } from 'react-icons/gr';
 import { TbBus } from 'react-icons/tb';
-import { GrPieChart } from 'react-icons/gr';
 import { RiTeamLine } from 'react-icons/ri';
 import { SummaryPage } from '@/pages/SummaryPage';
 

@@ -1,4 +1,4 @@
-import { FeaturedItem } from '@/features/homepage/types';
+import type { FeaturedItem } from '@/features/homepage/types';
 import { Flex, Image, Typography } from 'antd';
 
 const { Text } = Typography;
@@ -24,37 +24,36 @@ const featureds: FeaturedItem[] = [
   },
 ];
 
-export const FeaturedSection = () => {
-  return (
-    <div className="w-full">
-      <Flex justify="center" align="center" gap={12}>
-        {featureds?.map((featuredItem: FeaturedItem) => (
+export const FeaturedSection = () => (
+  <div className="w-full">
+    <Flex justify="center" align="center" gap={12}>
+      {featureds?.map((featuredItem: FeaturedItem, index) => (
+        <Flex
+          key={index}
+          vertical
+          align="center"
+          justify="space-between"
+          className="h-full min-h-64 flex-1 rounded-2xl border border-solid border-gray-200 bg-white p-4"
+        >
+          <Image
+            preview={false}
+            src={featuredItem?.image}
+            className="size-52"
+          />
           <Flex
             vertical
+            gap={2}
+            justify="center"
             align="center"
-            justify="space-between"
-            className="h-full min-h-64 flex-1 rounded-2xl border border-solid border-gray-200 bg-white p-4"
+            className="-mt-4"
           >
-            <Image
-              preview={false}
-              src={featuredItem?.image}
-              className="size-52"
-            />
-            <Flex
-              vertical
-              gap={2}
-              justify="center"
-              align="center"
-              className="-mt-4"
-            >
-              <Text className="text-center text-2xl font-bold">
-                {featuredItem?.title}
-              </Text>
-              <Text>{featuredItem?.subTitle}</Text>
-            </Flex>
+            <Text className="text-center text-2xl font-bold">
+              {featuredItem?.title}
+            </Text>
+            <Text>{featuredItem?.subTitle}</Text>
           </Flex>
-        ))}
-      </Flex>
-    </div>
-  );
-};
+        </Flex>
+      ))}
+    </Flex>
+  </div>
+);

@@ -1,0 +1,21 @@
+start=$(date +"%d/%m/%y %I:%M%P")
+start_duration=$(date +%s)
+
+echo "Husky Start...\n"
+
+echo "🏗️👷 Checking commit before push..."
+
+echo '\n(1/3) Checking types'
+pnpm check-types
+
+echo '(2/3) ✅  Linting your project'
+pnpm lint-staged
+
+end=$(date +"%d/%m/%y %I:%M%P")
+end_duration=$(date +%s)
+
+runtime=$((end_duration-start_duration))
+
+echo "--------------------------------"
+echo "\nHusky Done: 3/3 ✅"
+echo "\nCompleted in $runtime seconds"

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Row, Col, Card } from 'antd';
 
 const imageItems = [
@@ -6,7 +5,11 @@ const imageItems = [
   { src: 'https://via.placeholder.com/300x200', alt: 'Image 2' },
   { src: 'https://via.placeholder.com/300x200', alt: 'Image 3' },
   { src: 'https://via.placeholder.com/300x200', alt: 'Image 4' },
-  { src: 'https://via.placeholder.com/300x200', alt: 'View All', overlayText: 'View All (12)' },
+  {
+    src: 'https://via.placeholder.com/300x200',
+    alt: 'View All',
+    overlayText: 'View All (12)',
+  },
 ];
 
 const ImagesGrid = () => (
@@ -25,7 +28,7 @@ const ImagesGrid = () => (
                   alt={item.alt}
                   style={{ width: '100%', height: 'auto' }}
                 />
-                {item.overlayText && (
+                {item.overlayText ? (
                   <div
                     style={{
                       position: 'absolute',
@@ -41,7 +44,7 @@ const ImagesGrid = () => (
                   >
                     {item.overlayText}
                   </div>
-                )}
+                ) : null}
               </div>
             }
           />

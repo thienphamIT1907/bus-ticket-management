@@ -1,12 +1,10 @@
-import {
-  SidebarContext,
-  SidebarContextValue,
-} from '@/providers/SidebarProvider';
+import type { SidebarContextValue } from '@/providers/SidebarProvider';
+import { SidebarContext } from '@/providers/SidebarProvider';
 import { useContext, useEffect } from 'react';
 import { cn } from '@/libs/tailwind.ts';
 import { Tooltip } from 'antd';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { SideBarMenu } from '@/shared/types';
+import type { SideBarMenu } from '@/shared/types';
 
 type SidebarItemProps = Omit<SideBarMenu, 'id'>;
 
@@ -28,8 +26,8 @@ const SidebarItem = ({
 
   return (
     <>
-      {isActive && (
-        <Tooltip title={isCollapsed && title} placement="right">
+      {isActive ? (
+        <Tooltip title={isCollapsed ? title : null} placement="right">
           <Link to={href}>
             <div
               className={cn(
@@ -52,7 +50,7 @@ const SidebarItem = ({
             </div>
           </Link>
         </Tooltip>
-      )}
+      ) : null}
     </>
   );
 };

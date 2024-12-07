@@ -1,8 +1,8 @@
 import { useLogin } from '@/features/auth/hooks/useLogin';
 import { useToast } from '@/shared/hooks';
-import { LoginFormFields } from '@/shared/types';
+import type { LoginFormFields } from '@/shared/types';
 import { Button, Divider, Form, Input } from 'antd';
-import { Rule } from 'antd/es/form';
+import type { Rule } from 'antd/es/form';
 import { HiOutlineEye, HiOutlineEyeOff } from 'react-icons/hi';
 
 const { useForm, Item } = Form;
@@ -17,6 +17,13 @@ const validateRules: Rule[] = [
     message: 'Email không hợp lệ',
   },
 ];
+
+const renderEye = (visible: boolean) =>
+  visible ? (
+    <HiOutlineEye className="cursor-pointer" />
+  ) : (
+    <HiOutlineEyeOff className="cursor-pointer" />
+  );
 
 export const LoginForm = () => {
   const { showToast } = useToast();
@@ -67,13 +74,7 @@ export const LoginForm = () => {
           size="large"
           disabled={isLogging}
           placeholder="Mật khẩu"
-          iconRender={(visible) =>
-            visible ? (
-              <HiOutlineEye className="cursor-pointer" />
-            ) : (
-              <HiOutlineEyeOff className="cursor-pointer" />
-            )
-          }
+          iconRender={renderEye}
         />
       </Item>
       <Divider className="my-10" />

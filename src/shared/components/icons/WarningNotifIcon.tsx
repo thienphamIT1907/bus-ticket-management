@@ -1,4 +1,4 @@
-import { CustomIconProps } from '@/shared/types';
+import type { CustomIconProps } from '@/shared/types';
 import { IconWrapper } from '@/shared/utils/icon';
 
 const WarningNotifSvg = () => (

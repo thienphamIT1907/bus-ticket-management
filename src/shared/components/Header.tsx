@@ -1,10 +1,11 @@
+import { Button } from 'antd';
 import { useState } from 'react';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="sticky left-0 top-0 z-50 w-full bg-[#c35959] text-white px-60">
+    <header className="sticky left-0 top-0 z-50 w-full bg-[#c35959] px-60 text-white">
       <div className="container mx-auto flex items-center justify-between py-4">
         {/* Logo */}
         <div className="text-xl font-bold">
@@ -12,7 +13,7 @@ export const Header = () => {
         </div>
 
         {/* Hamburger Menu (Mobile) */}
-        <button
+        <Button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="block text-white focus:outline-none md:hidden"
         >
@@ -38,7 +39,7 @@ export const Header = () => {
               />
             )}
           </svg>
-        </button>
+        </Button>
 
         {/* Navigation Menu */}
         {/*<nav*/}

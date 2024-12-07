@@ -1,4 +1,5 @@
-import { Collapse, CollapseProps, Flex, Typography } from 'antd';
+import type { CollapseProps } from 'antd';
+import { Collapse, Flex, Typography } from 'antd';
 import { TableTitle } from '@/shared/components/TableTitle.tsx';
 
 const { Text } = Typography;
@@ -63,14 +64,9 @@ const items: CollapseProps['items'] = [
   },
 ];
 
-export const FAQSection = () => {
-  const onChange = (key: string | string[]) => {
-  };
-
-  return (
-    <Flex vertical gap={10}>
-      <TableTitle title="Các câu hỏi thường gặp" className="text-2xl" />
-      <Collapse items={items} onChange={onChange} size="large" />
-    </Flex>
-  );
-};
+export const FAQSection = () => (
+  <Flex vertical gap={10}>
+    <TableTitle title="Các câu hỏi thường gặp" className="text-2xl" />
+    <Collapse items={items} size="large" />
+  </Flex>
+);

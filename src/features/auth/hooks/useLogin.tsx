@@ -4,7 +4,7 @@ import { useState } from 'react';
 import sha256 from 'crypto-js/sha256';
 import CryptoJS from 'crypto-js';
 import { useNavigate } from 'react-router-dom';
-import { LoginFormFields } from '@/shared/types';
+import type { LoginFormFields } from '@/shared/types';
 
 export const useLogin = () => {
   const navigate = useNavigate();

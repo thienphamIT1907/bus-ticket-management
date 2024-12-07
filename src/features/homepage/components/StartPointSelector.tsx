@@ -1,7 +1,9 @@
-import { Empty, Select, SelectProps } from 'antd';
+import type { SelectProps } from 'antd';
+import { Empty, Select } from 'antd';
 import { debounce } from 'lodash-es';
 import { BiTargetLock } from 'react-icons/bi';
-import { ProvinceItem } from '@/features/homepage/types';
+import type { ProvinceItem } from '@/features/homepage/types';
+import { renderDropdown } from '@/features/homepage/helpers';
 
 type StartPointSelectorProps = {
   provinces?: ProvinceItem[];
@@ -51,7 +53,7 @@ export const StartPointSelector = ({
         )
       }
       onDropdownVisibleChange={handleDropdownVisibleChange}
-      dropdownRender={(menu: any) => (isLoading ? 'Đang tải...' : menu)}
+      dropdownRender={(menu) => renderDropdown(menu, isLoading)}
     />
   );
 };

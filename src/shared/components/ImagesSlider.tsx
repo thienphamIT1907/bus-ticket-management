@@ -1,4 +1,6 @@
-import { CSSProperties, useState } from 'react';
+import { Button } from 'antd';
+import type { CSSProperties } from 'react';
+import { useState } from 'react';
 import Slider from 'react-slick';
 
 const images = [
@@ -7,6 +9,40 @@ const images = [
   'https://images.unsplash.com/photo-1580978612852-c8d8a156a560?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fHw%3D',
   'https://images.unsplash.com/photo-1592211629077-4675f501d455?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDEwfHx8ZW58MHx8fHx8',
 ];
+
+const SampleNextArrow = (props: ArrowProps) => {
+  const { className, style, onClick } = props;
+  return (
+    <Button
+      className={className}
+      style={{
+        ...style,
+        display: 'block',
+        background: 'gray',
+        borderRadius: '100%',
+        opacity: 0.5,
+      }}
+      onClick={onClick}
+    />
+  );
+};
+
+const SamplePrevArrow = (props: ArrowProps) => {
+  const { className, style, onClick } = props;
+  return (
+    <Button
+      className={className}
+      style={{
+        ...style,
+        display: 'block',
+        background: 'gray',
+        borderRadius: '100%',
+        opacity: 0.5,
+      }}
+      onClick={onClick}
+    />
+  );
+};
 
 export const ImagesSlider = () => {
   const [nav1, setNav1] = useState<Slider | null>(null);
@@ -43,14 +79,14 @@ export const ImagesSlider = () => {
             key={index}
             className="max-h-[400px] w-full cursor-pointer overflow-hidden rounded-2xl"
           >
-            <img src={img} className="size-full" />
+            <img src={img} className="size-full" alt="img slider" />
           </div>
         ))}
       </Slider>
 
       <Slider
         {...thumbSettings}
-        ref={(slider) => setNav2(slider!)}
+        ref={(slider) => setNav2(slider)}
         className="mt-4"
       >
         {images.map((img, index) => (
@@ -78,37 +114,3 @@ type ArrowProps = {
   style?: CSSProperties;
   onClick?: () => void;
 };
-
-function SampleNextArrow(props: ArrowProps) {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      style={{
-        ...style,
-        display: 'block',
-        background: 'gray',
-        borderRadius: '100%',
-        opacity: 0.5,
-      }}
-      onClick={onClick}
-    ></div>
-  );
-}
-
-function SamplePrevArrow(props: ArrowProps) {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      style={{
-        ...style,
-        display: 'block',
-        background: 'gray',
-        borderRadius: '100%',
-        opacity: 0.5,
-      }}
-      onClick={onClick}
-    ></div>
-  );
-}

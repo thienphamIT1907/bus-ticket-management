@@ -1,20 +1,13 @@
-import React from 'react';
-import { Tag, Button, Flex, Typography } from 'antd';
-import {
-  ClockCircleOutlined,
-  UserOutlined,
-  EnvironmentOutlined,
-  CarOutlined,
-} from '@ant-design/icons';
+import { Button, Flex, Typography } from 'antd';
 import { GrUserWorker } from 'react-icons/gr';
 import { HiOutlineCreditCard } from 'react-icons/hi2';
 import { LuClock4 } from 'react-icons/lu';
-import { MdOutlineLocationOn } from 'react-icons/md';
 import { BsBusFront } from 'react-icons/bs';
 
 const { Text } = Typography;
 
 type Props = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ticket: any;
 };
 
@@ -23,11 +16,9 @@ export const TourItem = ({ ticket }: Props) => {
     startPlace,
     destinationPlace,
     driverName,
-    busType,
     date,
     time,
     price,
-    seatNumber,
     busNumber,
   } = ticket;
 
@@ -40,7 +31,7 @@ export const TourItem = ({ ticket }: Props) => {
       <Flex
         justify="center"
         align="center"
-        className="rounded-l-2xl bg-[#d84f57] p-6 size-44"
+        className="size-44 rounded-l-2xl bg-[#d84f57] p-6"
       >
         <BsBusFront className="size-20 text-gray-100" />
       </Flex>
@@ -68,7 +59,7 @@ export const TourItem = ({ ticket }: Props) => {
           <HiOutlineCreditCard />
           <Text className="text-base">Biển số xe: {busNumber}</Text>
         </div>
-        <Button size="large" className="bg-[#d84f57] text-white self-end">
+        <Button size="large" className="self-end bg-[#d84f57] text-white">
           Đặt ngay
         </Button>
       </Flex>

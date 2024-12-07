@@ -1,9 +1,7 @@
 import { TableTitle } from '@/shared/components/TableTitle.tsx';
 
-export const PopularTourList = () => {
-  return (
-    <>
-      <TableTitle title="Chuyến Xe Phổ Biến" className="text-2xl" />
-    </>
-  );
-};
+export const PopularTourList = () => (
+  <>
+    <TableTitle title="Chuyến Xe Phổ Biến" className="text-2xl" />
+  </>
+);

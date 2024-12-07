@@ -1,5 +1,1 @@
-export const BaseForm = () => {
-  return (
-    <div>BaseForm</div>
-  )
-}
+export const BaseForm = () => <div>BaseForm</div>;

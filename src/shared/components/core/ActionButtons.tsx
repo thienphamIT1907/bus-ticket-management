@@ -16,29 +16,27 @@ const ActionButtons = ({
   btnOkText,
   btnCancelText,
   ...restProps
-}: ActionButtonsProps) => {
-  return (
-    <>
-      <div className="flex items-center justify-end gap-x-4 py-2">
-        {onCancel ? (
-          <Button disabled={loading} onClick={onCancel} size="large">
-            {btnCancelText || 'Huỷ'}
-          </Button>
-        ) : null}
-        <Button
-          {...restProps}
-          htmlType="submit"
-          loading={loading}
-          onClick={onOK}
-          type="primary"
-          size="large"
-          className='bg-[#d84f57]'
-        >
-          {btnOkText || 'OK'}
+}: ActionButtonsProps) => (
+  <>
+    <div className="flex items-center justify-end gap-x-4 py-2">
+      {onCancel ? (
+        <Button disabled={loading} onClick={onCancel} size="large">
+          {btnCancelText || 'Huỷ'}
         </Button>
-      </div>
-    </>
-  );
-};
+      ) : null}
+      <Button
+        {...restProps}
+        htmlType="submit"
+        loading={loading}
+        onClick={onOK}
+        type="primary"
+        size="large"
+        className="bg-[#d84f57]"
+      >
+        {btnOkText || 'OK'}
+      </Button>
+    </div>
+  </>
+);
 
 export default ActionButtons;

@@ -3,7 +3,7 @@ import { StartPointSelector } from '@/features/homepage/components/StartPointSel
 import { EndPointSelector } from '@/features/homepage/components/EndPointSelector.tsx';
 import { useEffect, useState } from 'react';
 import { cn } from '@/libs/tailwind.ts';
-import { SearchTour } from '@/features/homepage/types';
+import type { SearchTour } from '@/features/homepage/types';
 import { useGetProvinces } from '@/features/homepage/hooks/useGetProvinces';
 
 const { useForm, Item } = Form;
@@ -70,7 +70,7 @@ export const SearchTourForm = () => {
             setQuery={setQuery}
           />
         </Item>
-        <Tooltip title={disabled && 'Vui lòng điền đủ thông tin!'}>
+        <Tooltip title={disabled ? 'Vui lòng điền đủ thông tin!' : null}>
           <Button
             className={cn(
               'self-start border-none bg-[#8f3333] px-10 font-medium text-white outline-none',

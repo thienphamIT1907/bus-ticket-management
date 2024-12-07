@@ -6,34 +6,32 @@ import { BusCompaniesSection } from '@/features/homepage/components/BusCompanies
 
 const { Text, Title } = Typography;
 
-export const Homepage = () => {
-  return (
-    <>
-      <div className="bg-[#c35959]">
-        {/* Image cover */}
-        <Flex
-          vertical
-          justify="center"
-          align="flex-start"
-          className="mx-auto max-w-4xl py-10"
-          gap={12}
-        >
-          <Title className="mb-1 text-5xl font-bold text-white" level={1}>
-            Tìm chuyến xe của bạn
-          </Title>
-          <Text className="text-2xl text-gray-200">
-            Nhanh chóng, tiện lợi và dễ dàng
-          </Text>
-          <SearchTourForm />
-        </Flex>
-      </div>
-      <Flex className="mx-auto my-10 max-w-4xl" vertical gap={40}>
-        {/* <PopularTourList /> */}
-        <FeaturedSection />
-        <BusCompaniesSection />
-        <FAQSection />
-        <FloatButton.BackTop />
+export const Homepage = () => (
+  <>
+    <div className="bg-[#c35959]">
+      {/* Image cover */}
+      <Flex
+        vertical
+        justify="center"
+        align="flex-start"
+        className="mx-auto max-w-4xl py-10"
+        gap={12}
+      >
+        <Title className="mb-1 text-5xl font-bold text-white" level={1}>
+          Tìm chuyến xe của bạn
+        </Title>
+        <Text className="text-2xl text-gray-200">
+          Nhanh chóng, tiện lợi và dễ dàng
+        </Text>
+        <SearchTourForm />
       </Flex>
-    </>
-  );
-};
+    </div>
+    <Flex className="mx-auto my-10 max-w-4xl" vertical gap={40}>
+      {/* <PopularTourList /> */}
+      <FeaturedSection />
+      <BusCompaniesSection />
+      <FAQSection />
+      <FloatButton.BackTop />
+    </Flex>
+  </>
+);

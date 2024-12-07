@@ -4,7 +4,8 @@ import { SIDEBAR_ROUTES } from '@/routes/private.tsx';
 import SidebarItem from '@/features/dashboard/components/SidebarItem.tsx';
 import { Flex, Typography } from 'antd';
 import { Logo } from '@/shared/components/core/Logo.tsx';
-import { SidebarContext, SidebarContextValue } from '@/providers';
+import type { SidebarContextValue } from '@/providers';
+import { SidebarContext } from '@/providers';
 
 const { Text } = Typography;
 

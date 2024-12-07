@@ -1,6 +1,6 @@
-import Icon from '@ant-design/icons';
-import { GetProps } from 'antd';
-import { ReactNode } from 'react';
+import type Icon from '@ant-design/icons';
+import type { GetProps } from 'antd';
+import type { ReactNode } from 'react';
 
 export type CustomIconProps = Partial<GetProps<typeof Icon>>;
 

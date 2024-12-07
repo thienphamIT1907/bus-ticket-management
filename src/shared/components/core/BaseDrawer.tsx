@@ -1,6 +1,7 @@
 import ActionButtons from '@/shared/components/core/ActionButtons';
-import { Drawer, DrawerProps } from 'antd';
-import { ReactNode } from 'react';
+import type { DrawerProps } from 'antd';
+import { Drawer } from 'antd';
+import type { ReactNode } from 'react';
 import '@/shared/styles/drawer.css';
 
 const LAYOUT_SIZE_DRAWER = 400;
@@ -51,7 +52,6 @@ export const BaseDrawer = ({
       width={width || LAYOUT_SIZE_DRAWER}
       destroyOnClose
       onClose={onClose}
-      
     >
       {!!open && children}
     </Drawer>

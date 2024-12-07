@@ -5,10 +5,6 @@ type Props = {
   className?: string;
 };
 
-export const Logo = ({ className }: Props) => {
-  return (
-    <BsBusFront
-      className={cn('size-20 text-gray-200', className && className)}
-    />
-  );
-};
+export const Logo = ({ className }: Props) => (
+  <BsBusFront className={cn('size-20 text-gray-200', className && className)} />
+);

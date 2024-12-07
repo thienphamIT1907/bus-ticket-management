@@ -1,6 +1,6 @@
 import { useToast } from '@/shared/hooks';
 import supabase from '@/shared/utils/supbabase';
-import { Session } from '@supabase/supabase-js';
+import type { Session } from '@supabase/supabase-js';
 import { useState, useEffect } from 'react';
 
 export const useSession = () => {

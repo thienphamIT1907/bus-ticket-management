@@ -51,8 +51,9 @@ export const BusCompaniesSection = () => {
     <Flex vertical gap={10}>
       <TableTitle title="Nhà Xe Đối Tác" className="text-2xl" />
       <div className="grid grid-cols-3 gap-4">
-        {mockData?.map((item) => (
+        {mockData?.map((item, index) => (
           <Card
+            key={index}
             className="rounded-2xl border border-solid border-gray-200 duration-200 hover:bg-gray-200"
             onClick={() => handleNavigateDetail(item?.id)}
           >

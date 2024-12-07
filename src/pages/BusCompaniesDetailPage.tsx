@@ -1,9 +1,8 @@
-import { TourItem } from '@/features/homepage/components/TourItem';
+import { TourItem } from '@/features/homepage/components/TourITem';
 import { ImagesSlider } from '@/shared/components/ImagesSlider';
 import { TableTitle } from '@/shared/components/TableTitle';
 import { Flex, Typography } from 'antd';
 import { BsBusFront } from 'react-icons/bs';
-import { useParams } from 'react-router-dom';
 
 const { Text } = Typography;
 
@@ -22,9 +21,9 @@ const mockDetails = {
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
           className="lucide lucide-air-vent"
         >
           <path d="M6 12H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
@@ -45,9 +44,9 @@ const mockDetails = {
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
           className="lucide lucide-wifi"
         >
           <path d="M12 20h.01" />
@@ -68,9 +67,9 @@ const mockDetails = {
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
           className="lucide lucide-milk"
         >
           <path d="M8 2h8" />
@@ -90,9 +89,9 @@ const mockDetails = {
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
           className="lucide lucide-sticky-note"
         >
           <path d="M16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8Z" />
@@ -111,9 +110,9 @@ const mockDetails = {
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
           className="lucide lucide-rocking-chair"
         >
           <polyline points="3.5 2 6.5 12.5 18 12.5" />
@@ -134,9 +133,9 @@ const mockDetails = {
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
           className="lucide lucide-plug-zap"
         >
           <path d="M6.3 20.3a2.4 2.4 0 0 0 3.4 0L12 18l-6-6-2.3 2.3a2.4 2.4 0 0 0 0 3.4Z" />
@@ -158,9 +157,9 @@ const mockDetails = {
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
           className="lucide lucide-briefcase"
         >
           <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
@@ -179,9 +178,9 @@ const mockDetails = {
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
           className="lucide lucide-paw-print"
         >
           <circle cx="11" cy="4" r="2" />
@@ -202,9 +201,9 @@ const mockDetails = {
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
           className="lucide lucide-cigarette"
         >
           <path d="M17 12H3a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h14" />
@@ -226,9 +225,9 @@ const mockDetails = {
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
           className="lucide lucide-lamp-desk"
         >
           <path d="m14 5-3 3 2 7 8-8-7-2Z" />
@@ -253,36 +252,34 @@ const ticketInfo = {
   busNumber: 'VN12345',
 };
 
-export const BusCompaniesDetailPage = () => {
-  return (
-    <Flex className="mx-auto my-10 max-w-4xl" vertical gap={40}>
-      <Flex align="center" gap={10}>
-        <BsBusFront className="size-8 text-[#d84f57]" />
-        <TableTitle
-          title={`NHÀ XE ${mockDetails?.name?.toUpperCase()}`}
-          className="text-3xl text-[#d84f57]"
-        />
-      </Flex>
-
-      <Flex vertical gap={10}>
-        <TableTitle title="Tiện Nghi" className="text-2xl" />
-        <div className="mt-2 grid grid-cols-3 gap-8">
-          {mockDetails?.util?.map((util, index) => (
-            <Flex key={index} gap={24} align="center" justify="flex-start">
-              {util?.icon}
-              <Text className="text-base">{util?.name}</Text>
-            </Flex>
-          ))}
-        </div>
-      </Flex>
-      <Flex vertical gap={10}>
-        <TableTitle title="Lộ Trình Hiện Có" className="text-2xl" />
-        <TourItem ticket={ticketInfo} />
-      </Flex>
-      <Flex vertical gap={10}>
-        <TableTitle title="Thư Viện Ảnh" className="text-2xl" />
-        <ImagesSlider />
-      </Flex>
+export const BusCompaniesDetailPage = () => (
+  <Flex className="mx-auto my-10 max-w-4xl" vertical gap={40}>
+    <Flex align="center" gap={10}>
+      <BsBusFront className="size-8 text-[#d84f57]" />
+      <TableTitle
+        title={`NHÀ XE ${mockDetails?.name?.toUpperCase()}`}
+        className="text-3xl text-[#d84f57]"
+      />
     </Flex>
-  );
-};
+
+    <Flex vertical gap={10}>
+      <TableTitle title="Tiện Nghi" className="text-2xl" />
+      <div className="mt-2 grid grid-cols-3 gap-8">
+        {mockDetails?.util?.map((util, index) => (
+          <Flex key={index} gap={24} align="center" justify="flex-start">
+            {util?.icon}
+            <Text className="text-base">{util?.name}</Text>
+          </Flex>
+        ))}
+      </div>
+    </Flex>
+    <Flex vertical gap={10}>
+      <TableTitle title="Lộ Trình Hiện Có" className="text-2xl" />
+      <TourItem ticket={ticketInfo} />
+    </Flex>
+    <Flex vertical gap={10}>
+      <TableTitle title="Thư Viện Ảnh" className="text-2xl" />
+      <ImagesSlider />
+    </Flex>
+  </Flex>
+);

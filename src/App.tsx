@@ -1,13 +1,10 @@
 import '../src/shared/styles/index.css';
 import { Outlet } from 'react-router-dom';
 
-function App() {
+const App = () => (
+  <div className="rounded-md bg-red-300 p-4">
+    <Outlet />
+  </div>
+);
 
-  return (
-    <div className='bg-red-300 rounded-md p-4'>
-      <Outlet />
-    </div>
-  )
-}
-
-export default App
+export default App;

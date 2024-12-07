@@ -9,7 +9,7 @@ export const PUBLIC_ROUTES = [
   },
   {
     path: 'dashboard/login',
-    element: <LoginPage />
+    element: <LoginPage />,
   },
   {
     path: '/bus-company/:id',

@@ -33,5 +33,4 @@
     }
   },
   "include": ["src", "src/@types/**/*", "./env.d.ts"],
-  // "references": [{ "path": "./tsconfig.node.json" }],
 }

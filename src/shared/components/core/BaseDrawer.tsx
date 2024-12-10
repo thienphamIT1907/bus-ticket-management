@@ -48,7 +48,7 @@ export const BaseDrawer = ({
       {...props}
       footer={hiddenFooter ? null : renderFooter()}
       keyboard={false}
-      maskClosable
+      maskClosable={false}
       width={width || LAYOUT_SIZE_DRAWER}
       destroyOnClose
       onClose={onClose}

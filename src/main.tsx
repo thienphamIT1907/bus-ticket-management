@@ -11,7 +11,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 const router = createBrowserRouter(ROUTES);
 
-const queryClient = new QueryClient({
+export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       retry: false,
@@ -24,7 +24,7 @@ createRoot(document.getElementById('root')!).render(
     <QueryClientProvider client={queryClient}>
       <AntdNotificationProvider>
         <RouterProvider router={router} />
-        <ReactQueryDevtools initialIsOpen={false} />
+        <ReactQueryDevtools initialIsOpen={false} position="left" />
       </AntdNotificationProvider>
     </QueryClientProvider>
   </StrictMode>,

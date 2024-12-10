@@ -1,1 +1,10 @@
-export const BaseTable = () => <div>BaseTable</div>;
+import type { TableProps } from 'antd';
+import { Table } from 'antd';
+
+export const BaseTable = (props: TableProps) => (
+  <Table
+    {...props}
+    scroll={{ x: 'max-content' }}
+    rowClassName={() => 'custom-row'}
+  />
+);

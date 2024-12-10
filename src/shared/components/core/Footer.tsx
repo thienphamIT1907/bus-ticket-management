@@ -1,5 +1,6 @@
 import { Col, Flex, Row, Typography } from 'antd';
 import { BsBusFront } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 
 const { Text } = Typography;
 
@@ -39,6 +40,12 @@ export const Footer = () => (
         <Flex vertical>
           <Text className="text-md font-bold text-white">Dịch vụ</Text>
           <Flex vertical className="mt-2" gap={4}>
+            <Link
+              className="cursor-pointer text-sm font-light text-gray-200 hover:underline"
+              to={'dashboard'}
+            >
+              Trang quản trị
+            </Link>
             <Text className="cursor-pointer text-sm font-light text-gray-200 hover:underline">
               Đánh giá chất lượng
             </Text>

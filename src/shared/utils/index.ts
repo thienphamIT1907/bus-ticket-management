@@ -1,4 +1,5 @@
 import type { MonthsInYear } from '@/shared/types';
+import { v4 as uuidv4 } from 'uuid';
 
 export const upperCaseFirstLetter = (str: string): string =>
   str.charAt(0).toUpperCase() + str.slice(1);
@@ -18,3 +19,5 @@ export const generateHeaderByCurrentPathname = (
 
   return `My ${headerPrefix} Board`;
 };
+
+export const getRandomUuid = () => uuidv4();

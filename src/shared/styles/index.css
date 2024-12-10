@@ -2,6 +2,7 @@
 
 @import './reset.css';
 @import './font.css';
+@import './table.css';
 
 @tailwind base;
 @tailwind components;

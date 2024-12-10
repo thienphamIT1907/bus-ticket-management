@@ -234,7 +234,6 @@ export default [
       'prefer-template': 'error',
       'comma-dangle': [1, 'always-multiline'],
       'no-shadow': 'off',
-      camelcase: 1,
       'no-empty-function': 1,
       'no-use-before-define': 0,
       'no-unsafe-optional-chaining': 0,

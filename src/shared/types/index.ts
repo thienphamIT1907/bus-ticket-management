@@ -38,3 +38,11 @@ export type LoginFormFields = {
   email: string;
   password: string;
 };
+
+export enum DataTable {
+  BUSES = 'buses',
+  COMPANIES = 'companies',
+  DRIVERS = 'drivers',
+  ROUTES = 'routes',
+  TICKETS = 'tickets',
+}

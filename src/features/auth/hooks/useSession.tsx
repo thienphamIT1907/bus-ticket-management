@@ -30,7 +30,7 @@ export const useSession = () => {
     };
 
     fetchSession();
-  }, []);
+  }, [showToast]);
 
   return { session, isLoadingSession, currentUser: session?.user };
 };

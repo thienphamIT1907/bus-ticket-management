@@ -3,6 +3,7 @@ import { UpdateBusCompanyForm } from '@/features/bus-companies-management/compon
 import { useBusCompanyColumns } from '@/features/bus-companies-management/hooks/useBusCompanyColumns';
 import { useDeleteBusCompany } from '@/features/bus-companies-management/hooks/useDeleteBusCompany';
 import { useGetBusCompany } from '@/features/bus-companies-management/hooks/useGetBusCompany';
+import { useToggleSponsor } from '@/features/bus-companies-management/hooks/useToggleSponsor';
 import type { BusCompany } from '@/features/bus-companies-management/types';
 import { BaseTable } from '@/shared/components/core/BaseTable';
 import { TableTitle } from '@/shared/components/TableTitle';
@@ -13,6 +14,8 @@ import { FiPlus } from 'react-icons/fi';
 
 export const BusCompaniesManagementPage = () => {
   const { data, isFetching } = useGetBusCompany();
+  const { handleToggleSponsor } = useToggleSponsor();
+
   const [selectedCompany, setSelectedCompany] = useState<
     BusCompany | undefined
   >(undefined);
@@ -44,9 +47,18 @@ export const BusCompaniesManagementPage = () => {
     closeUpdateBusCompanyForm();
   };
 
+  const onToggleSponsor = (isToggle: boolean, selectedCompany: BusCompany) => {
+    setSelectedCompany(selectedCompany);
+    handleToggleSponsor({
+      isToggle,
+      selectedCompany,
+    });
+  };
+
   const { columns } = useBusCompanyColumns({
     onDelete: onDeleteCompany,
     onUpdate: onUpdateCompany,
+    onToggle: onToggleSponsor,
   });
 
   return (
@@ -66,17 +78,16 @@ export const BusCompaniesManagementPage = () => {
         <div className="mt-10">
           <BaseTable dataSource={data} columns={columns} loading={isFetching} />
         </div>
+        <CreateBusCompanyForm
+          isOpen={isOpenCreateBusCompanyForm}
+          onClose={closeCreateBusCompanyForm}
+        />
+        <UpdateBusCompanyForm
+          isOpen={isOpenUpdateBusCompanyForm}
+          onClose={onCloseUpdateCompany}
+          selectedCompany={selectedCompany}
+        />
       </Flex>
-
-      <CreateBusCompanyForm
-        isOpen={isOpenCreateBusCompanyForm}
-        onClose={closeCreateBusCompanyForm}
-      />
-      <UpdateBusCompanyForm
-        isOpen={isOpenUpdateBusCompanyForm}
-        onClose={onCloseUpdateCompany}
-        selectedCompany={selectedCompany}
-      />
     </>
   );
 };

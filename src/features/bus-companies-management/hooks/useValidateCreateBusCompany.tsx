@@ -101,6 +101,10 @@ export const useValidateCreateBusCompany = () => {
       rules: VALIDATE_FIELDS_RULES.avatar,
       placeholder: '',
     },
+    isSponsor: {
+      label: 'Đối tác',
+      name: 'is_sponsor',
+    },
   };
   return {
     VALIDATE_FIELDS_RULES,

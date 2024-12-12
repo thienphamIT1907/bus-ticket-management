@@ -39,6 +39,7 @@ export const BaseDrawer = ({
         btnCancelText={btnCancelText}
         btnOkText={btnOKText}
         onOK={onOK}
+        onCancel={onCancel}
       />
     );
   };
@@ -53,7 +54,7 @@ export const BaseDrawer = ({
       destroyOnClose
       onClose={onClose}
     >
-      {!!open && children}
+      {children}
     </Drawer>
   );
 };

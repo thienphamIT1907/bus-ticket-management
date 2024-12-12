@@ -1,18 +1,22 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react-swc";
-import viteTsconfigPaths from "vite-tsconfig-paths";
-import tailwindcss from "tailwindcss";
-import postcssNesting from "postcss-nesting";
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react-swc';
+import viteTsconfigPaths from 'vite-tsconfig-paths';
+import tailwindcss from 'tailwindcss';
+import postcssNesting from 'postcss-nesting';
 import { resolve } from 'path';
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), viteTsconfigPaths()],
+  plugins: [
+    react({ plugins: [['@swc/plugin-styled-components', {}]] }),
+    viteTsconfigPaths(),
+  ],
+
   css: {
     // Import style with *.less file
     preprocessorOptions: {
       less: {
-        math: "always",
+        math: 'always',
         relativeUrls: true,
         javascriptEnabled: true,
       },
@@ -29,5 +33,9 @@ export default defineConfig({
   },
   server: {
     port: 6300,
+
+    hmr: {
+      overlay: true,
+    },
   },
 });

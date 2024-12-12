@@ -12,14 +12,14 @@ const items: CollapseProps['items'] = [
       <Text>
         Đặt vé xe trực tuyến tại Việt Nam thật tiện lợi với CS447Bus. Chỉ cần
         làm theo các bước sau: đăng nhập vào trang web CS447Bus, chọn điểm xuất
-        phát, chọn điểm đến và tìm chuyến đi phù hợp với bạn hành và tuyến đường
-        bạn muốn, rồi tiến hành thanh toán.
+        phát, chọn điểm đến và tìm chuyến đi phù hợp với bạn đồng hành và tuyến
+        đường bạn muốn, rồi tiến hành thanh toán.
       </Text>
     ),
   },
   {
     key: '2',
-    label: ' Các tuyến xe phổ biến ở Việt Nam là gì? ',
+    label: 'Có những tuyến xe phổ biến nào ở Việt Nam?',
     children: (
       <Text>
         Việt Nam tự hào có nhiều tuyến xe phổ biến, bao gồm Hà Nội đến Huế, Hà
@@ -35,7 +35,7 @@ const items: CollapseProps['items'] = [
     children: (
       <Text>
         Việt Nam có nhiều địa điểm không thể bỏ qua như Vịnh Hạ Long, Ninh Bình,
-        Đà Nẵng, Hạ Long, Huế, Hội An, Nha Trang, Thành phố Hồ Chí Minh và Sapa.
+        Đà Nẵng, Huế, Hội An, Nha Trang, Thành phố Hồ Chí Minh và Sapa, v.v.
       </Text>
     ),
   },

@@ -34,7 +34,7 @@ export default [
       '**/codegen.ts',
       '**/*.cjs',
       '**/*.schemas.tsx',
-      '**/eslint.config.mjs'
+      '**/eslint.config.mjs',
     ],
   },
   ...fixupConfigRules(
@@ -201,7 +201,12 @@ export default [
       'max-lines': ['warn', 500],
       'max-params': ['warn', 5],
       'multiline-comment-style': ['error', 'separate-lines'],
-      'no-console': 'warn',
+      'no-console': [
+        'warn',
+        {
+          allow: ['warn', 'error'],
+        },
+      ],
 
       'no-else-return': [
         'error',

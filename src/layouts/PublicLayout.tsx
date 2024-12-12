@@ -7,11 +7,7 @@ export const PublicLayout = () => {
   const isIgnoreLayout = location.pathname === '/dashboard/login';
 
   if (isIgnoreLayout) {
-    return (
-      <>
-        <Outlet />
-      </>
-    );
+    return <Outlet />;
   }
 
   return (

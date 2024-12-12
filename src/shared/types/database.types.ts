@@ -103,6 +103,7 @@ export type Database = {
           created_at: string;
           email: string | null;
           id: string;
+          is_sponsor: boolean | null;
           name: string | null;
           owner: string | null;
           phone: string | null;
@@ -114,6 +115,7 @@ export type Database = {
           created_at?: string;
           email?: string | null;
           id?: string;
+          is_sponsor?: boolean | null;
           name?: string | null;
           owner?: string | null;
           phone?: string | null;
@@ -125,6 +127,7 @@ export type Database = {
           created_at?: string;
           email?: string | null;
           id?: string;
+          is_sponsor?: boolean | null;
           name?: string | null;
           owner?: string | null;
           phone?: string | null;

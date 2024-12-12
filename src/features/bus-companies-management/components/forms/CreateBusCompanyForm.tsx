@@ -1,8 +1,10 @@
+import { ImageLink } from '@/features/bus-companies-management/components/ImageLink';
 import { useCreateBusCompany } from '@/features/bus-companies-management/hooks/useCreateBusCompany';
 import { useValidateCreateBusCompany } from '@/features/bus-companies-management/hooks/useValidateCreateBusCompany';
 import { BaseDrawer } from '@/shared/components/core/BaseDrawer';
 import { FormLabelField } from '@/shared/components/forms/FormLabelField';
-import { Button, Flex, Form, Input, Typography, Upload } from 'antd';
+import { Button, Flex, Form, Input, Typography } from 'antd';
+import { useWatch } from 'antd/es/form/Form';
 
 const { Item } = Form;
 const { Text } = Typography;
@@ -26,6 +28,8 @@ export const CreateBusCompanyForm = ({ isOpen, onClose }: Props) => {
       handleCreateBusCompany(formValues);
     });
   };
+
+  const logoField = useWatch(avatar.name, { form });
 
   return (
     <BaseDrawer
@@ -59,55 +63,60 @@ export const CreateBusCompanyForm = ({ isOpen, onClose }: Props) => {
       }
     >
       <Form layout="vertical" form={form} onFinish={onFinish}>
+        <ImageLink imageUrl={logoField} />
         <Item
-          hidden
           label={<FormLabelField value={avatar.label} />}
           name={avatar.name}
           rules={avatar.rules}
         >
-          <Upload />
+          <Input size="large" placeholder={name.placeholder} allowClear />
         </Item>
+
         <Item
           label={<FormLabelField value={name.label} />}
           name={name.name}
           rules={name.rules}
         >
-          <Input size="large" placeholder={name.placeholder} />
+          <Input size="large" placeholder={name.placeholder} allowClear />
         </Item>
         <Item
           label={<FormLabelField value={businessCode.label} />}
           name={businessCode.name}
           rules={businessCode.rules}
         >
-          <Input size="large" placeholder={businessCode.placeholder} />
+          <Input
+            size="large"
+            placeholder={businessCode.placeholder}
+            allowClear
+          />
         </Item>
         <Item
           label={<FormLabelField value={owner.label} />}
           name={owner.name}
           rules={owner.rules}
         >
-          <Input size="large" placeholder={owner.placeholder} />
+          <Input size="large" placeholder={owner.placeholder} allowClear />
         </Item>
         <Item
           label={<FormLabelField value={email.label} />}
           name={email.name}
           rules={email.rules}
         >
-          <Input size="large" placeholder={email.placeholder} />
+          <Input size="large" placeholder={email.placeholder} allowClear />
         </Item>
         <Item
           label={<FormLabelField value={phone.label} />}
           name={phone.name}
           rules={phone.rules}
         >
-          <Input size="large" placeholder={phone.placeholder} />
+          <Input size="large" placeholder={phone.placeholder} allowClear />
         </Item>
         <Item
           label={<FormLabelField value={address.label} />}
           name={address.name}
           rules={address.rules}
         >
-          <Input size="large" placeholder={address.placeholder} />
+          <Input size="large" placeholder={address.placeholder} allowClear />
         </Item>
       </Form>
     </BaseDrawer>

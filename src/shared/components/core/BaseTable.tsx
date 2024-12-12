@@ -6,5 +6,6 @@ export const BaseTable = (props: TableProps) => (
     {...props}
     scroll={{ x: 'max-content' }}
     rowClassName={() => 'custom-row'}
+    rowKey={(record) => record?.id || record?.key}
   />
 );

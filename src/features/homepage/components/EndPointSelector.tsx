@@ -36,6 +36,7 @@ export const EndPointSelector = ({
       filterOption={false}
       className="w-full"
       options={provinces?.map((item: ProvinceItem) => ({
+        key: item?.id,
         label: item.name,
         value: item?.name,
       }))}

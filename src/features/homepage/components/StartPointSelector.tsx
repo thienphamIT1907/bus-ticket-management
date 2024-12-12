@@ -35,7 +35,8 @@ export const StartPointSelector = ({
       defaultActiveFirstOption={false}
       filterOption={false}
       className="w-full"
-      options={provinces?.map(({ name }) => ({
+      options={provinces?.map(({ name, id }) => ({
+        key: id,
         label: name,
         value: name,
       }))}

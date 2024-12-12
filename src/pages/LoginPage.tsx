@@ -18,7 +18,7 @@ export const LoginPage = () => {
         replace: true,
       });
     }
-  }, [session]);
+  }, [navigate, session]);
 
   return (
     <>

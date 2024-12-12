@@ -1,5 +1,5 @@
 import type { BusCompany } from '@/features/bus-companies-management/types';
-import { Image, Typography } from 'antd';
+import { Image, Switch, Typography } from 'antd';
 import type { ColumnGroupType, ColumnType } from 'antd/es/table';
 import { TableActions } from '@/shared/components/core/TableActions';
 import dayjs from 'dayjs';
@@ -10,9 +10,14 @@ const { Text } = Typography;
 type Props = {
   onDelete: (companyId?: string) => void;
   onUpdate: (company?: BusCompany) => void;
+  onToggle: (isToggle: boolean, selectedCompany: BusCompany) => void;
 };
 
-export const useBusCompanyColumns = ({ onDelete, onUpdate }: Props) => {
+export const useBusCompanyColumns = ({
+  onDelete,
+  onUpdate,
+  onToggle,
+}: Props) => {
   const NAME_COLUMN: ColumnType<BusCompany> = {
     title: 'Tên nhà xe',
     dataIndex: 'name',
@@ -81,6 +86,17 @@ export const useBusCompanyColumns = ({ onDelete, onUpdate }: Props) => {
     ),
   };
 
+  const SPONSOR_COLUMN: ColumnType<BusCompany> = {
+    title: 'Đối tác',
+    dataIndex: 'is_sponsor',
+    render: (isSponsor: BusCompany['is_sponsor'], record: BusCompany) => (
+      <Switch
+        defaultChecked={isSponsor || false}
+        onChange={(value) => onToggle(value, record)}
+      />
+    ),
+  };
+
   const ACTIONS_COLUMN: ColumnType<BusCompany> = {
     title: '',
     width: 50,
@@ -102,6 +118,7 @@ export const useBusCompanyColumns = ({ onDelete, onUpdate }: Props) => {
     PHONE_COLUMN,
     ADDRESS_COLUMN,
     CREATED_AT_COLUMN,
+    SPONSOR_COLUMN,
     ACTIONS_COLUMN,
   ];
   return {

@@ -1,4 +1,4 @@
-import type { BusCompany } from '@/features/bus-companies-management/types';
+import type { BusRoute } from '@/features/bus-companies-management/types';
 import { QueryKeys } from '@/features/homepage/api/queryKeys';
 import { useToast } from '@/shared/hooks';
 import { DataTable } from '@/shared/types';
@@ -6,26 +6,26 @@ import supabase from '@/shared/utils/supbabase';
 import { useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';
 
-export const useToggleSponsor = () => {
+export const useToggleActiveRoute = () => {
   const { showToast } = useToast();
   const [isToggling, setIsToggling] = useState(false);
   const queryClient = useQueryClient();
 
-  const handleToggleSponsor = async ({
+  const handleToggleActiveRoute = async ({
     isToggle,
-    selectedCompany,
+    selectedRoute,
   }: {
     isToggle: boolean;
-    selectedCompany: BusCompany;
+    selectedRoute: BusRoute;
   }) => {
-    if (!selectedCompany?.id) return;
+    if (!selectedRoute?.id) return;
     setIsToggling(true);
     const { error } = await supabase
-      .from(DataTable.COMPANIES)
+      .from(DataTable.ROUTES)
       .update({
-        is_sponsor: isToggle,
+        is_active: isToggle,
       })
-      .eq('id', selectedCompany?.id);
+      .eq('id', selectedRoute?.id);
 
     if (error) {
       showToast({
@@ -34,16 +34,16 @@ export const useToggleSponsor = () => {
         description: error?.message,
       });
     }
-    queryClient.invalidateQueries({ queryKey: [QueryKeys.companies] });
+    queryClient.invalidateQueries({ queryKey: [QueryKeys.routes] });
     setIsToggling(false);
     showToast({
       type: 'success',
-      message: `${selectedCompany?.name || ''}`,
-      description: `Cập nhật thông tin nhà xe thành công!`,
+      message: `Tuyến ${selectedRoute?.start_point} - ${selectedRoute?.end_point}`,
+      description: `Cập nhật thông tin tuyến đường thành công!`,
     });
   };
   return {
     isToggling,
-    handleToggleSponsor,
+    handleToggleActiveRoute,
   };
 };

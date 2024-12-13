@@ -21,3 +21,17 @@ export const generateHeaderByCurrentPathname = (
 };
 
 export const getRandomUuid = () => uuidv4();
+
+export const normalizeLocationToSlug = (location?: string | null) => {
+  if (!location) return location;
+
+  const withoutAccents = location
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '');
+
+  const withoutSpaces = withoutAccents.replace(/\s+/g, '');
+
+  const result = withoutSpaces.toUpperCase();
+
+  return result;
+};

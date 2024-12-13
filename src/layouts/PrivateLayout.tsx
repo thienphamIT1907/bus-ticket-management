@@ -1,10 +1,11 @@
-import { Navigate, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import SidebarMenu from '@/features/dashboard/components/Sidebar.tsx';
 import Header from '@/features/dashboard/components/Header';
 import SidebarProvider from '@/providers/SidebarProvider';
 import { useSession } from '@/features/auth/hooks/useSession';
 import { LoadingPanel } from '@/shared/components/LoadingPanel';
 import { useLayoutEffect } from 'react';
+import { WrappedOutlet } from '@/layouts/WrappedOutlet';
 
 export const PrivateLayout = () => {
   const navigate = useNavigate();
@@ -34,7 +35,7 @@ export const PrivateLayout = () => {
                 <div className="flex h-screen w-full flex-col gap-4 overflow-hidden overflow-y-auto rounded-xl p-3">
                   <Header />
                   <div className="scrollbar-gutter size-full overflow-y-auto rounded-lg bg-white p-6 shadow-sm">
-                    <Outlet />
+                    <WrappedOutlet />
                   </div>
                 </div>
               </main>

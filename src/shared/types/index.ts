@@ -45,4 +45,5 @@ export enum DataTable {
   DRIVERS = 'drivers',
   ROUTES = 'routes',
   TICKETS = 'tickets',
+  COMFORTS = 'comforts',
 }

@@ -10,9 +10,7 @@ import { SidebarContext } from '@/providers';
 const { Text } = Typography;
 
 const SidebarMenu = () => {
-  const { isCollapsed, setIsCollapsed } = useContext(
-    SidebarContext,
-  ) as SidebarContextValue;
+  const { isCollapsed } = useContext(SidebarContext) as SidebarContextValue;
 
   return (
     <div
@@ -22,16 +20,6 @@ const SidebarMenu = () => {
           'max-w-[63px]': isCollapsed,
         },
       )}
-      onMouseEnter={() => {
-        if (isCollapsed) {
-          setIsCollapsed(false);
-        }
-      }}
-      onMouseLeave={() => {
-        if (!isCollapsed) {
-          setIsCollapsed(true);
-        }
-      }}
     >
       <div>
         <Flex gap={6} justify="flex-start" align="center" className="px-3">

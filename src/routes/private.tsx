@@ -8,6 +8,8 @@ import { TbBus } from 'react-icons/tb';
 import { RiTeamLine } from 'react-icons/ri';
 import { SummaryPage } from '@/pages/SummaryPage';
 import { RoutesManagementPage } from '@/pages/RoutesManagementPage';
+import { LuLeaf } from 'react-icons/lu';
+import { BusComfortsManagementPage } from '@/pages/BusComfortsManagementPage';
 
 export const PRIVATE_ROUTES = [
   {
@@ -29,6 +31,10 @@ export const PRIVATE_ROUTES = [
   {
     path: 'bus-companies-management',
     element: <BusCompaniesManagementPage />,
+  },
+  {
+    path: 'bus-comforts-management',
+    element: <BusComfortsManagementPage />,
   },
 ];
 
@@ -67,5 +73,13 @@ export const SIDEBAR_ROUTES: SideBarMenu[] = [
     title: 'Phương Tiện',
     isActive: true,
     href: 'vehicle-management',
+  },
+  {
+    id: 6,
+
+    Icon: <LuLeaf size={20} />,
+    title: 'Tiện ích',
+    isActive: true,
+    href: 'bus-comforts-management',
   },
 ];

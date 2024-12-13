@@ -10,7 +10,6 @@ export const WrappedOutlet = () => {
   return (
     <div
       aria-hidden
-      className="scrollbar-gutter size-full overflow-y-auto rounded-lg bg-white p-6 shadow-sm"
       onClick={() => {
         if (!isCollapsed) setIsCollapsed(true);
       }}

@@ -17,7 +17,7 @@ const SidebarMenu = () => {
   return (
     <div
       className={cn(
-        'duration-30 flex size-full h-screen w-full max-w-[230px] flex-col justify-between gap-y-4 overflow-hidden overflow-y-auto rounded-lg py-4 pl-2 transition-all ease-in-out',
+        'flex size-full h-screen w-full max-w-[230px] flex-col justify-between gap-y-4 overflow-hidden overflow-y-auto rounded-lg py-4 pl-2 transition-all duration-300 ease-in-out',
         {
           'max-w-[63px]': isCollapsed,
         },

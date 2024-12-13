@@ -1,5 +1,4 @@
 import type { SideBarMenu } from '@/shared/types';
-import { TourManagementPage } from '@/pages/TourManagementPage.tsx';
 import { DriverManagementPage } from '@/pages/DriverManagementPage.tsx';
 import { VehicleManagementPage } from '@/pages/VehicleManagementPage.tsx';
 import { BusCompaniesManagementPage } from '@/pages/BusCompaniesManagementPage';
@@ -8,6 +7,7 @@ import { GrUserPolice, GrPieChart } from 'react-icons/gr';
 import { TbBus } from 'react-icons/tb';
 import { RiTeamLine } from 'react-icons/ri';
 import { SummaryPage } from '@/pages/SummaryPage';
+import { RoutesManagementPage } from '@/pages/RoutesManagementPage';
 
 export const PRIVATE_ROUTES = [
   {
@@ -15,8 +15,8 @@ export const PRIVATE_ROUTES = [
     element: <SummaryPage />,
   },
   {
-    path: 'tour-management',
-    element: <TourManagementPage />,
+    path: 'routes-management',
+    element: <RoutesManagementPage />,
   },
   {
     path: 'driver-management',
@@ -45,7 +45,7 @@ export const SIDEBAR_ROUTES: SideBarMenu[] = [
     Icon: <FaRegMap size={20} />,
     title: 'Tuyến Đường',
     isActive: true,
-    href: 'tour-management',
+    href: 'routes-management',
   },
   {
     id: 3,

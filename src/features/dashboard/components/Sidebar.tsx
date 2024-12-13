@@ -10,16 +10,28 @@ import { SidebarContext } from '@/providers';
 const { Text } = Typography;
 
 const SidebarMenu = () => {
-  const { isCollapsed } = useContext(SidebarContext) as SidebarContextValue;
+  const { isCollapsed, setIsCollapsed } = useContext(
+    SidebarContext,
+  ) as SidebarContextValue;
 
   return (
     <div
       className={cn(
-        'flex size-full h-screen w-full max-w-[230px] flex-col justify-between gap-y-4 overflow-hidden overflow-y-auto rounded-lg py-4 pl-2 transition-all duration-500 ease-in-out',
+        'duration-30 flex size-full h-screen w-full max-w-[230px] flex-col justify-between gap-y-4 overflow-hidden overflow-y-auto rounded-lg py-4 pl-2 transition-all ease-in-out',
         {
           'max-w-[63px]': isCollapsed,
         },
       )}
+      onMouseEnter={() => {
+        if (isCollapsed) {
+          setIsCollapsed(false);
+        }
+      }}
+      onMouseLeave={() => {
+        if (!isCollapsed) {
+          setIsCollapsed(true);
+        }
+      }}
     >
       <div>
         <Flex gap={6} justify="flex-start" align="center" className="px-3">

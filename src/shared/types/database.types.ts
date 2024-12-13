@@ -134,6 +134,36 @@ export type Database = {
         };
         Relationships: [];
       };
+      routes: {
+        Row: {
+          created_at: string;
+          end_point: string | null;
+          est_distance: number | null;
+          est_time: number | null;
+          id: string;
+          is_active: boolean | null;
+          start_point: string | null;
+        };
+        Insert: {
+          created_at?: string;
+          end_point?: string | null;
+          est_distance?: number | null;
+          est_time?: number | null;
+          id?: string;
+          is_active?: boolean | null;
+          start_point?: string | null;
+        };
+        Update: {
+          created_at?: string;
+          end_point?: string | null;
+          est_distance?: number | null;
+          est_time?: number | null;
+          id?: string;
+          is_active?: boolean | null;
+          start_point?: string | null;
+        };
+        Relationships: [];
+      };
     };
     Views: {
       [_ in never]: never;

@@ -5,39 +5,39 @@ import supabase from '@/shared/utils/supbabase';
 import { useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';
 
-export const useDeleteBusCompany = () => {
+export const useDeleteBusRoute = () => {
   const { showToast } = useToast();
   const [isDeleting, setIsDeleting] = useState(false);
   const queryClient = useQueryClient();
 
-  const handleDeleteCompany = async (companyId?: string) => {
-    if (!companyId) return;
+  const handleDeleteBusRoute = async (routeId?: string) => {
+    if (!routeId) return;
 
     setIsDeleting(true);
     const { error } = await supabase
-      .from(DataTable.COMPANIES)
+      .from(DataTable.ROUTES)
       .delete()
-      .eq('id', companyId);
+      .eq('id', routeId);
 
     if (error) {
       showToast({
         type: 'error',
         message: 'Error',
-        description: error?.message || 'Không thể xoá nhà xe!',
+        description: error?.message || 'Không thể xoá tuyến đường!',
       });
     }
 
-    queryClient.invalidateQueries({ queryKey: [QueryKeys.companies] });
+    queryClient.invalidateQueries({ queryKey: [QueryKeys.routes] });
 
     setIsDeleting(false);
     showToast({
-      message: 'Xoá nhà xe thành công',
+      message: 'Xoá tuyến đường thành công',
       type: 'success',
     });
   };
 
   return {
     isDeleting,
-    handleDeleteCompany,
+    handleDeleteBusRoute,
   };
 };

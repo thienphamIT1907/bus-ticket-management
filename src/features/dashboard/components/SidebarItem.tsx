@@ -22,7 +22,7 @@ const SidebarItem = ({
     if (!isActive) {
       navigate('/dashboard/summary');
     }
-  }, []);
+  }, [isActive, navigate]);
 
   return (
     <>

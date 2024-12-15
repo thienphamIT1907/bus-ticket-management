@@ -1,4 +1,4 @@
-import type { BusComfort } from '@/features/bus-companies-management/types';
+import type { BusComfort } from '@/shared/types';
 import { Flex, Image, Switch, Typography } from 'antd';
 
 const { Text } = Typography;

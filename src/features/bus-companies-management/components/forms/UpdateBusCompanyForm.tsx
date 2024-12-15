@@ -1,9 +1,9 @@
 import { ImageLink } from '@/features/bus-companies-management/components/ImageLink';
 import { useUpdateBusCompany } from '@/features/bus-companies-management/hooks/useUpdateBusCompany';
 import { useValidateCreateBusCompany } from '@/features/bus-companies-management/hooks/useValidateCreateBusCompany';
-import type { BusCompany } from '@/features/bus-companies-management/types';
 import { BaseDrawer } from '@/shared/components/core/BaseDrawer';
 import { FormLabelField } from '@/shared/components/forms/FormLabelField';
+import type { BusCompany } from '@/shared/types';
 import { Button, Flex, Form, Input, Typography } from 'antd';
 import { useWatch } from 'antd/es/form/Form';
 import { FaCheck } from 'react-icons/fa6';

@@ -1,6 +1,6 @@
-import type { BusCompany } from '@/features/bus-companies-management/types';
 import { QueryKeys } from '@/features/homepage/api/queryKeys';
 import { DEFAULT_PAGE_SIZE } from '@/shared/constants';
+import type { BusCompany } from '@/shared/types';
 import { DataTable } from '@/shared/types';
 import type { Database } from '@/shared/types/database.types';
 import supabase from '@/shared/utils/supbabase';

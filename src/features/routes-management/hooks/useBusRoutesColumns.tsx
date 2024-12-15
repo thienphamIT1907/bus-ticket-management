@@ -1,5 +1,5 @@
-import type { BusRoute } from '@/features/bus-companies-management/types';
 import { TableActions } from '@/shared/components/core/TableActions';
+import type { BusRoute } from '@/shared/types';
 import { Switch, Typography } from 'antd';
 import type { ColumnGroupType, ColumnType } from 'antd/es/table';
 

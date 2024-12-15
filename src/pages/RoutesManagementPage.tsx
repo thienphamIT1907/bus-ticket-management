@@ -1,4 +1,3 @@
-import type { BusRoute } from '@/features/bus-companies-management/types';
 import { CreateRouteForm } from '@/features/routes-management/components/forms/CreateRouteForm';
 import { UpdateRouteForm } from '@/features/routes-management/components/forms/UpdateRouteForm';
 import { useBusRoutesColumns } from '@/features/routes-management/hooks/useBusRoutesColumns';
@@ -8,6 +7,7 @@ import { useToggleActiveRoute } from '@/features/routes-management/hooks/useTogg
 import { BaseTable } from '@/shared/components/core/BaseTable';
 import { TableTitle } from '@/shared/components/TableTitle';
 import { useToggle } from '@/shared/hooks';
+import type { BusRoute } from '@/shared/types';
 import { Button, Flex } from 'antd';
 import { useState } from 'react';
 import { FiPlus } from 'react-icons/fi';

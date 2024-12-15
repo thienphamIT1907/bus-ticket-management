@@ -1,6 +1,6 @@
-import type { BusCompany } from '@/features/bus-companies-management/types';
 import { QueryKeys } from '@/features/homepage/api/queryKeys';
 import { useToast } from '@/shared/hooks';
+import type { BusCompany } from '@/shared/types';
 import { DataTable } from '@/shared/types';
 import supabase from '@/shared/utils/supbabase';
 import { useQueryClient } from '@tanstack/react-query';

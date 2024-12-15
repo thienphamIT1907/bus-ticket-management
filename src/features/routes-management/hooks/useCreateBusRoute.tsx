@@ -1,6 +1,6 @@
-import type { BusRoute } from '@/features/bus-companies-management/types';
 import { QueryKeys } from '@/features/homepage/api/queryKeys';
 import { useToast } from '@/shared/hooks';
+import type { BusRoute } from '@/shared/types';
 import { DataTable } from '@/shared/types';
 import { normalizeLocationToSlug } from '@/shared/utils';
 import supabase from '@/shared/utils/supbabase';

@@ -1,9 +1,9 @@
-import type { BusCompany } from '@/features/bus-companies-management/types';
 import { Image, Switch, Typography } from 'antd';
 import type { ColumnGroupType, ColumnType } from 'antd/es/table';
 import { TableActions } from '@/shared/components/core/TableActions';
 import dayjs from 'dayjs';
 import { DATE_TIME_FORMAT } from '@/shared/constants/datetime';
+import type { BusCompany } from '@/shared/types';
 
 const { Text } = Typography;
 

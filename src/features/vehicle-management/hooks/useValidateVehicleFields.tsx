@@ -20,6 +20,12 @@ export const useValidateVehicleFields = () => {
         message: 'Vui lòng chọn đủ thông tin',
       },
     ],
+    comforts: [
+      {
+        required: true,
+        message: 'Vui lòng chọn đủ thông tin',
+      },
+    ],
   };
 
   const VEHICLE_FORM_FIELDS = {
@@ -52,6 +58,12 @@ export const useValidateVehicleFields = () => {
       name: 'type',
       rules: VALIDATE_FIELDS_RULES.type,
       placeholder: 'Chọn loại',
+    },
+    comforts: {
+      label: 'Tiện ích',
+      name: 'comforts',
+      rules: VALIDATE_FIELDS_RULES.comforts,
+      placeholder: 'Chọn tiện ích',
     },
   };
 

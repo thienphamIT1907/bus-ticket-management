@@ -14,17 +14,35 @@ export const useDeleteVehicle = () => {
     if (!vehicleId) return;
 
     setIsDeleting(true);
-    const { error } = await supabase
+
+    const { error: comfortError } = await supabase
+      .from(DataTable.BUSES_COMFORTS)
+      .delete()
+      .eq('bus_id', vehicleId);
+
+    if (comfortError) {
+      showToast({
+        type: 'error',
+        message: 'Error',
+        description:
+          comfortError?.message ||
+          'Có lỗi khi xoá tiện ích liên kết với phương tiện!',
+      });
+      return;
+    }
+
+    const { error: busError } = await supabase
       .from(DataTable.BUSES)
       .delete()
       .eq('id', vehicleId);
 
-    if (error) {
+    if (busError) {
       showToast({
         type: 'error',
         message: 'Error',
-        description: error?.message || 'Không thể xoá phương tiện!',
+        description: busError?.message || 'Có lỗi khi xoá phương tiện!',
       });
+      return;
     }
 
     queryClient.invalidateQueries({ queryKey: [QueryKeys.buses] });

@@ -20,6 +20,11 @@ export const useGetVehicle = () =>
           *,
           companies (
            *
+          ),
+          buses_comforts (
+            comforts (
+              *
+            )
           )
         `,
         )

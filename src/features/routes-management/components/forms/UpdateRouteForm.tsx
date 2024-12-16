@@ -1,8 +1,8 @@
-import type { BusRoute } from '@/features/bus-companies-management/types';
 import { useUpdateBusRoute } from '@/features/routes-management/hooks/useUpdateBusRoute';
 import { useValidateBusRouteFields } from '@/features/routes-management/hooks/useValidateBusRouteFields';
 import { BaseDrawer } from '@/shared/components/core/BaseDrawer';
 import { FormLabelField } from '@/shared/components/forms/FormLabelField';
+import type { BusRoute } from '@/shared/types';
 import { Button, Flex, Form, Input, InputNumber, Typography } from 'antd';
 
 const { Item } = Form;

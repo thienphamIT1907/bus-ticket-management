@@ -14,7 +14,7 @@ const ErrorPage = () => {
   return (
     <>
       <div className="flex size-full h-screen flex-col items-center justify-center gap-6 text-center">
-        <p className="rounded-xl bg-red-300 p-4 text-base text-red-700">
+        <p className="rounded-xl bg-red-100 p-4 text-base text-red-700">
           {error.statusText || error.message}
         </p>
         <Button onClick={() => navigate('/dashboard/summary')} type="primary">

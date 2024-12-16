@@ -4,10 +4,10 @@ import { useBusCompanyColumns } from '@/features/bus-companies-management/hooks/
 import { useDeleteBusCompany } from '@/features/bus-companies-management/hooks/useDeleteBusCompany';
 import { useGetBusCompany } from '@/features/bus-companies-management/hooks/useGetBusCompany';
 import { useToggleSponsor } from '@/features/bus-companies-management/hooks/useToggleSponsor';
-import type { BusCompany } from '@/features/bus-companies-management/types';
 import { BaseTable } from '@/shared/components/core/BaseTable';
 import { TableTitle } from '@/shared/components/TableTitle';
 import { useToggle } from '@/shared/hooks';
+import type { BusCompany } from '@/shared/types';
 import { Button, Flex } from 'antd';
 import { useState } from 'react';
 import { FiPlus } from 'react-icons/fi';

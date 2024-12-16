@@ -18,6 +18,7 @@ export const BusComfortsManagementPage = () => {
         <Flex justify="space-between" className="w-full">
           <TableTitle title="Quản Lý Tiện ích" className="text-2xl" />
           <Button
+            hidden
             disabled
             className="border-none bg-[#d84f57] px-6 py-2 text-white opacity-50 shadow-md shadow-[#f3969c]"
             size="large"

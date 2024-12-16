@@ -1,6 +1,7 @@
 import type Icon from '@ant-design/icons';
 import type { GetProps } from 'antd';
 import type { ReactNode } from 'react';
+import type { Database } from '@/shared/types/database.types';
 
 export type CustomIconProps = Partial<GetProps<typeof Icon>>;
 
@@ -47,3 +48,17 @@ export enum DataTable {
   TICKETS = 'tickets',
   COMFORTS = 'comforts',
 }
+
+export type BusCompany = Database['public']['Tables']['companies']['Row'];
+
+export type BusRoute = Database['public']['Tables']['routes']['Row'];
+
+export type BusComfort = Database['public']['Tables']['comforts']['Row'];
+
+export type Vehicle = Database['public']['Tables']['buses']['Row'] & {
+  companies?: BusCompany;
+};
+
+export type SummaryData = {
+  comforts?: number;
+};

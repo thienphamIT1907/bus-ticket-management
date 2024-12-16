@@ -1,6 +1,6 @@
 import { QueryKeys } from '@/features/homepage/api/queryKeys';
 import { useToast } from '@/shared/hooks';
-import type { BusCompany } from '@/shared/types';
+import type { Vehicle } from '@/shared/types';
 import { DataTable } from '@/shared/types';
 import supabase from '@/shared/utils/supbabase';
 import { useQueryClient } from '@tanstack/react-query';
@@ -11,22 +11,22 @@ const { useForm } = Form;
 
 type Props = {
   onClose: () => void;
-  selectedCompany?: BusCompany;
+  selectedVehicle?: Vehicle;
 };
 
-export const useUpdateBusCompany = ({ onClose, selectedCompany }: Props) => {
-  const [form] = useForm<BusCompany>();
+export const useUpdateVehicle = ({ onClose, selectedVehicle }: Props) => {
+  const [form] = useForm<Vehicle>();
   const { showToast } = useToast();
   const [isUpdating, setIsUpdating] = useState(false);
   const queryClient = useQueryClient();
 
-  const handleUpdateBusCompany = async () => {
-    if (!selectedCompany?.id) return;
+  const handleUpdateVehicle = async () => {
+    if (!selectedVehicle?.id) return;
     setIsUpdating(true);
     const { error } = await supabase
-      .from(DataTable.COMPANIES)
+      .from(DataTable.BUSES)
       .update(form.getFieldsValue())
-      .eq('id', selectedCompany?.id);
+      .eq('id', selectedVehicle?.id);
 
     if (error) {
       showToast({
@@ -36,19 +36,19 @@ export const useUpdateBusCompany = ({ onClose, selectedCompany }: Props) => {
       });
     }
 
-    queryClient.invalidateQueries({ queryKey: [QueryKeys.companies] });
+    queryClient.invalidateQueries({ queryKey: [QueryKeys.buses] });
 
     setIsUpdating(false);
     showToast({
       type: 'success',
-      message: `${selectedCompany?.name || ''}`,
+      message: `Phương tiện ${selectedVehicle?.plate_number || ''}`,
       description: `Cập nhật thông tin nhà xe thành công!`,
     });
     onClose();
   };
 
   return {
-    handleUpdateBusCompany,
+    handleUpdateVehicle,
     form,
     isUpdating,
   };

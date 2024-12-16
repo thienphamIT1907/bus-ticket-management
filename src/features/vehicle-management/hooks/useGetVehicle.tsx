@@ -1,28 +1,34 @@
 import { QueryKeys } from '@/features/homepage/api/queryKeys';
 import { DEFAULT_PAGE_SIZE } from '@/shared/constants';
-import type { BusCompany } from '@/shared/types';
+import type { BusCompany, Vehicle } from '@/shared/types';
 import { DataTable } from '@/shared/types';
 import type { Database } from '@/shared/types/database.types';
 import supabase from '@/shared/utils/supbabase';
 import { useQuery } from '@tanstack/react-query';
 
-export const useGetBusCompany = () =>
-  useQuery<BusCompany[]>({
-    queryKey: [QueryKeys.companies],
+export const useGetVehicle = () =>
+  useQuery<Vehicle[]>({
+    queryKey: [QueryKeys.buses],
     initialData: [],
     queryFn: async () => {
       const { data, error } = await supabase
-        .from<
-          DataTable.COMPANIES,
-          Database['public']['Tables']['companies']
-        >(DataTable.COMPANIES)
-        .select()
+        .from<DataTable.BUSES, Database['public']['Tables']['buses']>(
+          DataTable.BUSES,
+        )
+        .select(
+          `
+          *,
+          companies (
+           *
+          )
+        `,
+        )
         .limit(DEFAULT_PAGE_SIZE)
         .order('created_at', { ascending: false });
 
       if (error) {
         throw new Error(error.message);
       }
-      return data;
+      return data as unknown as Vehicle[] & { companies: BusCompany };
     },
   });

@@ -1,8 +1,6 @@
 import { QueryKeys } from '@/features/homepage/api/queryKeys';
 import { useToast } from '@/shared/hooks';
-import type { BusRoute } from '@/shared/types';
-import { DataTable } from '@/shared/types';
-import { normalizeLocationToSlug } from '@/shared/utils';
+import { DataTable, type Vehicle } from '@/shared/types';
 import supabase from '@/shared/utils/supbabase';
 import { useQueryClient } from '@tanstack/react-query';
 import { Form } from 'antd';
@@ -14,20 +12,17 @@ type Props = {
   onClose: () => void;
 };
 
-export const useCreateBusRoute = ({ onClose }: Props) => {
-  const [form] = useForm<BusRoute>();
+export const useCreateVehicle = ({ onClose }: Props) => {
+  const [form] = useForm<Vehicle>();
   const { showToast } = useToast();
   const [isCreating, setIsCreating] = useState(false);
   const queryClient = useQueryClient();
 
-  const handleCreateBusRoute = async (newRoute: BusRoute) => {
+  const handleCreateVehicle = async (newVehicle: Vehicle) => {
     setIsCreating(true);
 
-    const { error } = await supabase.from(DataTable.ROUTES).insert({
-      ...newRoute,
-      is_active: true,
-      start_slug: normalizeLocationToSlug(newRoute?.start_point),
-      end_slug: normalizeLocationToSlug(newRoute.end_point),
+    const { error } = await supabase.from(DataTable.BUSES).insert({
+      ...newVehicle,
     });
 
     if (error) {
@@ -37,13 +32,13 @@ export const useCreateBusRoute = ({ onClose }: Props) => {
         description: error?.message,
       });
     }
-    queryClient.invalidateQueries({ queryKey: [QueryKeys.routes] });
+    queryClient.invalidateQueries({ queryKey: [QueryKeys.buses] });
     setIsCreating(false);
     onClose();
   };
 
   return {
-    handleCreateBusRoute,
+    handleCreateVehicle,
     form,
     isCreating,
   };

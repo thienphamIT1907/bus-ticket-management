@@ -3,6 +3,7 @@ import { useCreateVehicle } from '@/features/vehicle-management/hooks/useCreateV
 import { useValidateVehicleFields } from '@/features/vehicle-management/hooks/useValidateVehicleFields';
 import { BaseDrawer } from '@/shared/components/core/BaseDrawer';
 import { FormLabelField } from '@/shared/components/forms/FormLabelField';
+import { ComfortsSelector } from '@/shared/components/selectors/ComfortsSelector';
 import { CompaniesSelector } from '@/shared/components/selectors/CompaniesSelector';
 import { DriverSelector } from '@/shared/components/selectors/DriverSelector';
 import { TypesSelector } from '@/shared/components/selectors/TypeSelector';
@@ -18,7 +19,8 @@ type Props = {
 
 export const CreateVehicleForm = ({ isOpen, onClose }: Props) => {
   const { VEHICLE_FORM_FIELDS } = useValidateVehicleFields();
-  const { capacity, company, driver, plateNumber, type } = VEHICLE_FORM_FIELDS;
+  const { capacity, company, driver, plateNumber, type, comforts } =
+    VEHICLE_FORM_FIELDS;
 
   const { form, handleCreateVehicle, isCreating } = useCreateVehicle({
     onClose,
@@ -101,6 +103,13 @@ export const CreateVehicleForm = ({ isOpen, onClose }: Props) => {
           rules={type.rules}
         >
           <TypesSelector />
+        </Item>
+        <Item
+          label={<FormLabelField value={comforts?.label} />}
+          name={comforts.name}
+          rules={comforts.rules}
+        >
+          <ComfortsSelector placeholder={comforts?.placeholder} />
         </Item>
       </Form>
     </BaseDrawer>

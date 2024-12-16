@@ -47,6 +47,7 @@ export enum DataTable {
   ROUTES = 'routes',
   TICKETS = 'tickets',
   COMFORTS = 'comforts',
+  BUSES_COMFORTS = 'buses_comforts',
 }
 
 export type BusCompany = Database['public']['Tables']['companies']['Row'];
@@ -57,6 +58,10 @@ export type BusComfort = Database['public']['Tables']['comforts']['Row'];
 
 export type Vehicle = Database['public']['Tables']['buses']['Row'] & {
   companies?: BusCompany;
+  comforts?: string[];
+  buses_comforts?: {
+    comforts: BusComfort;
+  }[];
 };
 
 export type SummaryData = {

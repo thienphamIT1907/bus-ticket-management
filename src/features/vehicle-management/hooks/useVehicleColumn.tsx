@@ -1,6 +1,6 @@
 import { TableActions } from '@/shared/components/core/TableActions';
 import type { Vehicle } from '@/shared/types';
-import { Typography } from 'antd';
+import { Flex, Typography } from 'antd';
 import type { ColumnGroupType, ColumnType } from 'antd/es/table';
 
 const { Text } = Typography;
@@ -49,6 +49,23 @@ export const useVehicleColumn = ({ onDelete, onUpdate }: Props) => {
     render: (driver: Vehicle['driver_id']) => <Text>{driver}</Text>,
   };
 
+  const COMFORTS_COLUMN: ColumnType<Vehicle> = {
+    title: 'Tiện ích',
+    dataIndex: 'buses_comforts',
+    width: 350,
+    render: (buses_comforts: Vehicle['buses_comforts']) => (
+      <Flex wrap gap={6}>
+        {buses_comforts?.map((item) => (
+          <Flex key={item?.comforts?.id} gap={4}>
+            <Text className="rounded-lg border border-solid border-gray-200 px-2">
+              {item?.comforts?.name}
+            </Text>
+          </Flex>
+        ))}
+      </Flex>
+    ),
+  };
+
   const ACTIONS_COLUMN: ColumnType<Vehicle> = {
     title: '',
     width: 50,
@@ -67,6 +84,7 @@ export const useVehicleColumn = ({ onDelete, onUpdate }: Props) => {
     COMPANY_COLUMN,
     TYPE_COLUMN,
     DRIVER_COLUMN,
+    COMFORTS_COLUMN,
     ACTIONS_COLUMN,
   ];
   return {

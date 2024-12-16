@@ -3,11 +3,13 @@ import { useUpdateVehicle } from '@/features/vehicle-management/hooks/useUpdateV
 import { useValidateVehicleFields } from '@/features/vehicle-management/hooks/useValidateVehicleFields';
 import { BaseDrawer } from '@/shared/components/core/BaseDrawer';
 import { FormLabelField } from '@/shared/components/forms/FormLabelField';
+import { ComfortsSelector } from '@/shared/components/selectors/ComfortsSelector';
 import { CompaniesSelector } from '@/shared/components/selectors/CompaniesSelector';
 import { DriverSelector } from '@/shared/components/selectors/DriverSelector';
 import { TypesSelector } from '@/shared/components/selectors/TypeSelector';
 import type { Vehicle } from '@/shared/types';
 import { Button, Flex, Form, Input, Typography } from 'antd';
+import { useEffect } from 'react';
 
 const { Item } = Form;
 const { Text } = Typography;
@@ -24,7 +26,8 @@ export const UpdateVehicleForm = ({
   selectedVehicle,
 }: Props) => {
   const { VEHICLE_FORM_FIELDS } = useValidateVehicleFields();
-  const { capacity, company, driver, plateNumber, type } = VEHICLE_FORM_FIELDS;
+  const { capacity, company, driver, plateNumber, type, comforts } =
+    VEHICLE_FORM_FIELDS;
 
   const { form, handleUpdateVehicle, isUpdating } = useUpdateVehicle({
     onClose,
@@ -36,6 +39,14 @@ export const UpdateVehicleForm = ({
       handleUpdateVehicle();
     });
   };
+
+  useEffect(() => {
+    form.setFieldsValue({
+      comforts: selectedVehicle?.buses_comforts?.map(
+        (comfort) => comfort?.comforts?.id,
+      ),
+    });
+  }, [form, selectedVehicle?.buses_comforts]);
 
   return (
     <BaseDrawer
@@ -72,7 +83,9 @@ export const UpdateVehicleForm = ({
         layout="vertical"
         form={form}
         onFinish={onFinish}
-        initialValues={selectedVehicle}
+        initialValues={{
+          ...selectedVehicle,
+        }}
       >
         <Item
           label={<FormLabelField value={plateNumber.label} />}
@@ -113,6 +126,13 @@ export const UpdateVehicleForm = ({
           rules={type.rules}
         >
           <TypesSelector />
+        </Item>
+        <Item
+          label={<FormLabelField value={comforts?.label} />}
+          name={comforts.name}
+          rules={comforts.rules}
+        >
+          <ComfortsSelector placeholder={comforts?.placeholder} />
         </Item>
       </Form>
     </BaseDrawer>

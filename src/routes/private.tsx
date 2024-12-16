@@ -78,7 +78,7 @@ export const SIDEBAR_ROUTES: SideBarMenu[] = [
     id: 6,
 
     Icon: <LuLeaf size={20} />,
-    title: 'Tiện ích',
+    title: 'Tiện Ích',
     isActive: true,
     href: 'bus-comforts-management',
   },

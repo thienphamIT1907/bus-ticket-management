@@ -4,7 +4,8 @@ import { SidebarContext } from '@/providers/SidebarProvider';
 import { AiOutlineMenuFold } from 'react-icons/ai';
 import { useContext } from 'react';
 import { cn } from '@/libs/tailwind';
-import { Button } from 'antd';
+import { Button, Flex } from 'antd';
+import { Clock } from '@/shared/components/Clock';
 
 const Header = () => {
   const { setIsCollapsed, isCollapsed } = useContext(
@@ -28,7 +29,9 @@ const Header = () => {
             size={20}
           />
         </Button>
-        <h2 className="xs:min-w-[200px] text-lg font-medium">Dashboard</h2>
+        <Flex justify="flex-start" align="center" gap={10}>
+          <Clock />
+        </Flex>
       </div>
       <UserAvatar />
     </div>

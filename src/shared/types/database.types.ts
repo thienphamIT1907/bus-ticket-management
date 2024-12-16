@@ -75,21 +75,21 @@ export type Database = {
         Row: {
           created_at: string;
           icon_base64: string | null;
-          id: number;
+          id: string;
           is_active: boolean | null;
           name: string | null;
         };
         Insert: {
           created_at?: string;
           icon_base64?: string | null;
-          id?: number;
+          id?: string;
           is_active?: boolean | null;
           name?: string | null;
         };
         Update: {
           created_at?: string;
           icon_base64?: string | null;
-          id?: number;
+          id?: string;
           is_active?: boolean | null;
           name?: string | null;
         };
@@ -138,29 +138,35 @@ export type Database = {
         Row: {
           created_at: string;
           end_point: string | null;
+          end_slug: string | null;
           est_distance: number | null;
           est_time: number | null;
           id: string;
           is_active: boolean | null;
           start_point: string | null;
+          start_slug: string | null;
         };
         Insert: {
           created_at?: string;
           end_point?: string | null;
+          end_slug?: string | null;
           est_distance?: number | null;
           est_time?: number | null;
           id?: string;
           is_active?: boolean | null;
           start_point?: string | null;
+          start_slug?: string | null;
         };
         Update: {
           created_at?: string;
           end_point?: string | null;
+          end_slug?: string | null;
           est_distance?: number | null;
           est_time?: number | null;
           id?: string;
           is_active?: boolean | null;
           start_point?: string | null;
+          start_slug?: string | null;
         };
         Relationships: [];
       };
@@ -169,7 +175,24 @@ export type Database = {
       [_ in never]: never;
     };
     Functions: {
-      [_ in never]: never;
+      fetch_table_counts: {
+        Args: Record<PropertyKey, never>;
+        Returns: Json;
+      };
+      fetchtotal: {
+        Args: Record<PropertyKey, never>;
+        Returns: Json;
+      };
+      greet: {
+        Args: {
+          name: string;
+        };
+        Returns: string;
+      };
+      hello_world: {
+        Args: Record<PropertyKey, never>;
+        Returns: string;
+      };
     };
     Enums: {
       [_ in never]: never;

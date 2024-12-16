@@ -30,7 +30,7 @@ export const useBusRoutesColumns = ({
   };
 
   const EST_DISTANCE_COLUMN: ColumnType<BusRoute> = {
-    title: 'Khoảng cách dự tính',
+    title: 'Khoảng cách dự tính (km)',
     dataIndex: 'est_distance',
     ellipsis: true,
     render: (estDistance: BusRoute['est_distance']) => (
@@ -39,7 +39,7 @@ export const useBusRoutesColumns = ({
   };
 
   const EST_HOUR_COLUMN: ColumnType<BusRoute> = {
-    title: 'Thời gian dự tính',
+    title: 'Thời gian dự tính (giờ)',
     dataIndex: 'est_time',
     ellipsis: true,
     render: (estTime: BusRoute['est_time']) => <Text>{estTime}</Text>,

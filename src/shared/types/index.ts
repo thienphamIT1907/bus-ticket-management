@@ -55,6 +55,10 @@ export type BusRoute = Database['public']['Tables']['routes']['Row'];
 
 export type BusComfort = Database['public']['Tables']['comforts']['Row'];
 
+export type Vehicle = Database['public']['Tables']['buses']['Row'] & {
+  companies?: BusCompany;
+};
+
 export type SummaryData = {
   comforts?: number;
 };

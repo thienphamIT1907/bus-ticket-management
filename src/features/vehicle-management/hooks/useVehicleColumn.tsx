@@ -56,11 +56,15 @@ export const useVehicleColumn = ({ onDelete, onUpdate }: Props) => {
     render: (buses_comforts: Vehicle['buses_comforts']) => (
       <Flex wrap gap={6}>
         {buses_comforts?.map((item) => (
-          <Flex key={item?.comforts?.id} gap={4}>
-            <Text className="rounded-lg border border-solid border-gray-200 px-2">
-              {item?.comforts?.name}
-            </Text>
-          </Flex>
+          <>
+            {item?.comforts ? (
+              <Flex key={item?.comforts?.id} gap={4}>
+                <Text className="rounded-lg border border-solid border-gray-200 px-2">
+                  {item?.comforts?.name}
+                </Text>
+              </Flex>
+            ) : null}
+          </>
         ))}
       </Flex>
     ),

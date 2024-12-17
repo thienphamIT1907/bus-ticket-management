@@ -22,12 +22,13 @@ export const useGetVehicle = () =>
            *
           ),
           buses_comforts (
-            comforts (
+            comforts!inner (
               *
             )
           )
         `,
         )
+        .eq('buses_comforts.comforts.is_active', true)
         .limit(DEFAULT_PAGE_SIZE)
         .order('created_at', { ascending: false });
 

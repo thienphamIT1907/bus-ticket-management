@@ -131,7 +131,6 @@
     "unused-imports/no-unused-imports": "error",
     "array-callback-return": "error",
     "arrow-body-style": ["error", "as-needed"],
-    "complexity": ["warn", 30],
     "default-case-last": "error",
     "default-param-last": "error",
     "dot-notation": "error",

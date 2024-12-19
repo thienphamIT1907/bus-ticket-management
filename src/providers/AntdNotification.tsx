@@ -15,6 +15,7 @@ export const AntdNotificationProvider = ({
       theme={{
         token: {
           colorPrimary: '#c35959',
+          fontSize: 16,
         },
       }}
     >

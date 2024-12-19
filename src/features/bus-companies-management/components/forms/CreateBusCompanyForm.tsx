@@ -69,7 +69,7 @@ export const CreateBusCompanyForm = ({ isOpen, onClose }: Props) => {
           name={avatar.name}
           rules={avatar.rules}
         >
-          <Input size="large" placeholder={name.placeholder} allowClear />
+          <Input size="large" placeholder={avatar.placeholder} allowClear />
         </Item>
 
         <Item
@@ -109,7 +109,12 @@ export const CreateBusCompanyForm = ({ isOpen, onClose }: Props) => {
           name={phone.name}
           rules={phone.rules}
         >
-          <Input size="large" placeholder={phone.placeholder} allowClear />
+          <Input
+            size="large"
+            placeholder={phone.placeholder}
+            allowClear
+            maxLength={10}
+          />
         </Item>
         <Item
           label={<FormLabelField value={address.label} />}

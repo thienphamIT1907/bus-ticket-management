@@ -103,7 +103,7 @@ export const useValidateCreateBusCompany = () => {
       label: 'Logo',
       name: 'avatar_base64',
       rules: VALIDATE_FIELDS_RULES.avatar,
-      placeholder: '',
+      placeholder: 'Nhập link hình ảnh',
     },
     isSponsor: {
       label: 'Đối tác',

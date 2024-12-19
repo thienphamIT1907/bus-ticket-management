@@ -5,7 +5,7 @@ const { Text } = Typography;
 
 type Props = {
   title?: string;
-  total?: number;
+  total?: number | string;
   subTitle?: string;
   diff?: number;
 };
@@ -16,7 +16,7 @@ export const SummaryCard = ({ title, total, subTitle, diff }: Props) => (
     align="flex-start"
     justify="flex-start"
     gap={4}
-    className="rounded-2xl border border-solid border-gray-100 px-4 py-2"
+    className="rounded-xl border border-solid border-gray-200 px-4 py-2"
   >
     <Text className="text-gray-500">{title}</Text>
     <Text className="text-3xl font-bold">{total || 0}</Text>

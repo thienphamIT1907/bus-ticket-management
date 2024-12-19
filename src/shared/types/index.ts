@@ -68,4 +68,9 @@ export type Driver = Database['public']['Tables']['drivers']['Row'];
 
 export type SummaryData = {
   comforts?: number;
+  vehicles?: number;
+  buses?: number;
+  drivers?: number;
+  routes?: number;
+  companies?: number;
 };

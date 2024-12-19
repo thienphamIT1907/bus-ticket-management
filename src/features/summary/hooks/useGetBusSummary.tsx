@@ -16,6 +16,11 @@ export const useGetBusSummary = () => {
     isFetching,
     summary: {
       comforts: data?.comforts,
+      vechiles: data?.vehicles,
+      drivers: data?.drivers,
+      buses: data?.buses,
+      routes: data?.routes,
+      companies: data?.companies,
     },
   };
 };

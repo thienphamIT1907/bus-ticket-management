@@ -64,6 +64,8 @@ export type Vehicle = Database['public']['Tables']['buses']['Row'] & {
   }[];
 };
 
+export type Driver = Database['public']['Tables']['drivers']['Row'];
+
 export type SummaryData = {
   comforts?: number;
 };

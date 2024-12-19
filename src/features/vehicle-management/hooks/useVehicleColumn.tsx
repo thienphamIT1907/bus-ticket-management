@@ -6,8 +6,8 @@ import type { ColumnGroupType, ColumnType } from 'antd/es/table';
 const { Text } = Typography;
 
 type Props = {
-  onDelete: (routeId?: string) => void;
-  onUpdate: (route?: Vehicle) => void;
+  onDelete: (vehicleId?: string) => void;
+  onUpdate: (vehicle?: Vehicle) => void;
 };
 
 export const useVehicleColumn = ({ onDelete, onUpdate }: Props) => {

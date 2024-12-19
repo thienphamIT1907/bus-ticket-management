@@ -15,7 +15,7 @@ export type Database = {
           company_id: string | null;
           created_at: string;
           driver_id: string | null;
-          id: string | null;
+          id: string;
           plate_number: string | null;
           route_id: string | null;
           type: string | null;
@@ -25,7 +25,7 @@ export type Database = {
           company_id?: string | null;
           created_at?: string;
           driver_id?: string | null;
-          id?: string | null;
+          id?: string;
           plate_number?: string | null;
           route_id?: string | null;
           type?: string | null;
@@ -35,7 +35,7 @@ export type Database = {
           company_id?: string | null;
           created_at?: string;
           driver_id?: string | null;
-          id?: string | null;
+          id?: string;
           plate_number?: string | null;
           route_id?: string | null;
           type?: string | null;
@@ -46,6 +46,13 @@ export type Database = {
             columns: ['company_id'];
             isOneToOne: false;
             referencedRelation: 'companies';
+            referencedColumns: ['id'];
+          },
+          {
+            foreignKeyName: 'buses_driver_id_fkey';
+            columns: ['driver_id'];
+            isOneToOne: false;
+            referencedRelation: 'drivers';
             referencedColumns: ['id'];
           },
         ];
@@ -69,7 +76,22 @@ export type Database = {
           created_at?: string;
           id?: number;
         };
-        Relationships: [];
+        Relationships: [
+          {
+            foreignKeyName: 'buses_comforts_bus_id_fkey';
+            columns: ['bus_id'];
+            isOneToOne: false;
+            referencedRelation: 'buses';
+            referencedColumns: ['id'];
+          },
+          {
+            foreignKeyName: 'buses_comforts_comfort_id_fkey';
+            columns: ['comfort_id'];
+            isOneToOne: false;
+            referencedRelation: 'comforts';
+            referencedColumns: ['id'];
+          },
+        ];
       };
       comforts: {
         Row: {
@@ -131,6 +153,45 @@ export type Database = {
           name?: string | null;
           owner?: string | null;
           phone?: string | null;
+        };
+        Relationships: [];
+      };
+      drivers: {
+        Row: {
+          address: string | null;
+          birthday: string | null;
+          created_at: string | null;
+          email: string | null;
+          first_name: string;
+          id: string;
+          last_name: string | null;
+          license_type: string | null;
+          phone: string | null;
+          yoe: string | null;
+        };
+        Insert: {
+          address?: string | null;
+          birthday?: string | null;
+          created_at?: string | null;
+          email?: string | null;
+          first_name: string;
+          id?: string;
+          last_name?: string | null;
+          license_type?: string | null;
+          phone?: string | null;
+          yoe?: string | null;
+        };
+        Update: {
+          address?: string | null;
+          birthday?: string | null;
+          created_at?: string | null;
+          email?: string | null;
+          first_name?: string;
+          id?: string;
+          last_name?: string | null;
+          license_type?: string | null;
+          phone?: string | null;
+          yoe?: string | null;
         };
         Relationships: [];
       };

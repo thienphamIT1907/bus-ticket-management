@@ -41,8 +41,12 @@ export const useValidateCreateBusCompany = () => {
     ],
     phone: [
       {
+        pattern: /^[0-9]*$/,
+        message: 'Số điện thoại không hợp lệ',
+      },
+      {
         required: true,
-        message: 'Vui lòng nhập đủ thông tin',
+        message: 'Vui lòng nhập đủ thông tin',
       },
     ],
     email: [

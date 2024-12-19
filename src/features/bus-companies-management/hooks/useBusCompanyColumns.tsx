@@ -89,6 +89,7 @@ export const useBusCompanyColumns = ({
   const SPONSOR_COLUMN: ColumnType<BusCompany> = {
     title: 'Đối tác',
     dataIndex: 'is_sponsor',
+    fixed: 'right',
     render: (isSponsor: BusCompany['is_sponsor'], record: BusCompany) => (
       <Switch
         defaultChecked={isSponsor || false}

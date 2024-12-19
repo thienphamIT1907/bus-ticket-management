@@ -100,7 +100,7 @@ export const UpdateBusCompanyForm = ({
           name={avatar.name}
           rules={avatar.rules}
         >
-          <Input size="large" placeholder={name.placeholder} allowClear />
+          <Input size="large" placeholder={avatar.placeholder} allowClear />
         </Item>
 
         <Item

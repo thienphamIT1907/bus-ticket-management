@@ -17,18 +17,29 @@ export const SummaryPage = () => {
         <Spin spinning={isFetching}>
           <Flex>
             <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              <SummaryCard diff={0} title="Chuyến xe" />
               <SummaryCard
-                title="Nhà xe / Phương tiện"
                 diff={0}
-                total={`${summary?.companies} / ${summary?.buses}`}
+                title="Chuyến xe"
+                subTitle="đang vận hành"
+              />
+              <SummaryCard
+                title="Tiện ích"
+                diff={0}
+                total={summary?.comforts}
+                subTitle="được cung cấp"
               />
               <SummaryCard
                 diff={0}
                 title="Tuyến đường"
                 total={summary?.routes}
+                subTitle="đang khai thác"
               />
-              <SummaryCard diff={0} title="Tài xế" total={summary?.drivers} />
+              <SummaryCard
+                diff={0}
+                title="Tài xế"
+                total={summary?.drivers}
+                subTitle="đang hoạt động"
+              />
             </div>
           </Flex>
         </Spin>

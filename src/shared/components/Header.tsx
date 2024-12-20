@@ -1,5 +1,6 @@
 import { Button } from 'antd';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -7,9 +8,8 @@ export const Header = () => {
   return (
     <header className="sticky left-0 top-0 z-50 w-full bg-[#c35959] px-60 text-white">
       <div className="container mx-auto flex items-center justify-between py-4">
-        {/* Logo */}
         <div className="text-xl font-bold">
-          <a href="/">BusBooking</a>
+          <Link to="/">CS447Bus</Link>
         </div>
 
         {/* Hamburger Menu (Mobile) */}

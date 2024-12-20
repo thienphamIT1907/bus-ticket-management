@@ -31,7 +31,9 @@ export const SummaryCard = ({ title, total, subTitle, diff }: Props) => (
           <Text className="text-xs font-medium text-green-600">12.52%</Text>
         </Flex>
       ) : null}
-      {subTitle ? <Text className="text-gray-400">{subTitle}</Text> : null}
+      {subTitle ? (
+        <Text className="text-sm text-gray-400">{subTitle}</Text>
+      ) : null}
     </Flex>
   </Flex>
 );

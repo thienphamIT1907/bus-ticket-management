@@ -5,13 +5,13 @@ export const useValidateDriverFields = () => {
     firstName: [
       {
         required: true,
-        message: 'Vui lòng nhập đủ thông tin',
+        message: 'Không được để trống!',
       },
     ],
     lastName: [
       {
         required: true,
-        message: 'Vui lòng nhập đủ thông tin',
+        message: 'Không được để trống!',
       },
     ],
     birthday: [

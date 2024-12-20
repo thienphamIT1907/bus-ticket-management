@@ -43,6 +43,11 @@ export const RoutesManagementPage = () => {
     setSelectedRoute(route);
   };
 
+  const onCloseUpdateRoute = () => {
+    setSelectedRoute(undefined);
+    closeUpdateRouteForm();
+  };
+
   const onToggleActiveRoute = (isToggle: boolean, selectedRoute: BusRoute) => {
     setSelectedRoute(selectedRoute);
     handleToggleActiveRoute({
@@ -80,7 +85,7 @@ export const RoutesManagementPage = () => {
         />
         <UpdateRouteForm
           isOpen={isOpenUpdateRouteForm}
-          onClose={closeUpdateRouteForm}
+          onClose={onCloseUpdateRoute}
           selectedRoute={selectedRoute}
         />
       </Flex>

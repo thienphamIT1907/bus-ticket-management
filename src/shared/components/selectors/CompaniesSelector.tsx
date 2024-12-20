@@ -23,6 +23,7 @@ export const CompaniesSelector = ({ ...props }: Props) => {
       loading={isFetching}
       placeholder="Chọn nhà xe"
       allowClear
+      optionFilterProp="label"
     />
   );
 };

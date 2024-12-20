@@ -6,16 +6,16 @@ const { Text } = Typography;
 
 export const Clock = () => {
   const [dateTime, setDateTime] = useState<string>(
-    dayjs().format('HH:mm:ss | DD/MM/YYYY'),
+    dayjs().format('DD/MM/YYYY | HH:mm:ss '),
   );
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setDateTime(dayjs().format('HH:mm:ss | DD/MM/YYYY'));
+      setDateTime(dayjs().format('DD/MM/YYYY | HH:mm:ss'));
     }, 1000);
 
     return () => clearInterval(interval);
   }, []);
 
-  return <Text className="text-xl font-bold">{dateTime}</Text>;
+  return <Text className="text-2xl font-bold text-[#c35959]">{dateTime}</Text>;
 };

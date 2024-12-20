@@ -5,11 +5,11 @@ import { BusCompaniesManagementPage } from '@/pages/BusCompaniesManagementPage';
 import { FaRegMap } from 'react-icons/fa';
 import { GrUserPolice, GrPieChart } from 'react-icons/gr';
 import { TbBus } from 'react-icons/tb';
-import { RiTeamLine } from 'react-icons/ri';
 import { SummaryPage } from '@/pages/SummaryPage';
 import { RoutesManagementPage } from '@/pages/RoutesManagementPage';
 import { LuLeaf } from 'react-icons/lu';
 import { BusComfortsManagementPage } from '@/pages/BusComfortsManagementPage';
+import { PiBuildingOffice } from 'react-icons/pi';
 
 export const PRIVATE_ROUTES = [
   {
@@ -55,7 +55,7 @@ export const SIDEBAR_ROUTES: SideBarMenu[] = [
   },
   {
     id: 3,
-    Icon: <RiTeamLine size={20} />,
+    Icon: <PiBuildingOffice size={20} />,
     title: 'Nhà Xe',
     isActive: true,
     href: 'bus-companies-management',

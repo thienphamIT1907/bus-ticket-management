@@ -75,6 +75,16 @@ export const useToursColumn = ({ onDelete, onUpdate }: Props) => {
     ),
   };
 
+  const PRICE_COLUMN: ColumnType<Tour> = {
+    title: 'Giá',
+    dataIndex: 'price',
+    ellipsis: true,
+    fixed: 'right',
+    render: (price: Tour['price']) => (
+      <Text className="font-bold">{price || 0} VND</Text>
+    ),
+  };
+
   const ACTIONS_COLUMN: ColumnType<Tour> = {
     title: '',
     width: 50,
@@ -94,6 +104,7 @@ export const useToursColumn = ({ onDelete, onUpdate }: Props) => {
     BUS_COLUMN,
     DRIVER_COLUMN,
     TIME_TO_GO_COLUMN,
+    PRICE_COLUMN,
     ACTIONS_COLUMN,
   ];
   return {

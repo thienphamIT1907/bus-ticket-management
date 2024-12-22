@@ -20,6 +20,12 @@ export const useValidateTourFields = () => {
         message: 'Vui lòng nhập đủ thông tin',
       },
     ],
+    price: [
+      {
+        required: true,
+        message: 'Vui lòng nhập đủ thông tin',
+      },
+    ],
   };
 
   const TOUR_FORM_FIELDS = {
@@ -40,6 +46,12 @@ export const useValidateTourFields = () => {
       name: 'time_to_go',
       rules: VALIDATE_FIELDS_RULES.bus,
       placeholder: 'Chọn thời gian khởi hành',
+    },
+    price: {
+      label: 'Giá',
+      name: 'price',
+      rules: VALIDATE_FIELDS_RULES.price,
+      placeholder: 'Nhập giá',
     },
   };
 

@@ -27,7 +27,6 @@ export const Homepage = () => (
       </Flex>
     </div>
     <Flex className="mx-auto my-10 max-w-4xl" vertical gap={40}>
-      {/* <PopularTourList /> */}
       <FeaturedSection />
       <BusCompaniesSection />
       <FAQSection />

@@ -4,6 +4,7 @@ import { debounce } from 'lodash-es';
 import { IoLocationOutline } from 'react-icons/io5';
 import type { ProvinceItem } from '@/features/homepage/types';
 import { renderDropdown } from '@/features/homepage/helpers';
+import { FaCheck } from 'react-icons/fa6';
 
 type EndPointSelectorProps = {
   provinces?: ProvinceItem[];
@@ -38,7 +39,7 @@ export const EndPointSelector = ({
       options={provinces?.map((item: ProvinceItem) => ({
         key: item?.id,
         label: item.name,
-        value: item?.name,
+        value: item?.slug,
       }))}
       disabled={isLoading}
       showSearch
@@ -55,6 +56,7 @@ export const EndPointSelector = ({
       }
       onDropdownVisibleChange={handleDropdownVisibleChange}
       dropdownRender={(menu) => renderDropdown(menu, isLoading)}
+      menuItemSelectedIcon={<FaCheck className="size-5 text-green-600" />}
     />
   );
 };

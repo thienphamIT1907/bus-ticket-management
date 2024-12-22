@@ -283,6 +283,7 @@ export type Database = {
           bus_id: string | null;
           created_at: string;
           id: string;
+          price: number | null;
           route_id: string | null;
           time_to_go: string | null;
         };
@@ -290,6 +291,7 @@ export type Database = {
           bus_id?: string | null;
           created_at?: string;
           id?: string;
+          price?: number | null;
           route_id?: string | null;
           time_to_go?: string | null;
         };
@@ -297,6 +299,7 @@ export type Database = {
           bus_id?: string | null;
           created_at?: string;
           id?: string;
+          price?: number | null;
           route_id?: string | null;
           time_to_go?: string | null;
         };

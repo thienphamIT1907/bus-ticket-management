@@ -7,7 +7,7 @@ import { useValidateTourFields } from '@/features/tours-management/hooks/useVali
 import { BaseDrawer } from '@/shared/components/core/BaseDrawer';
 import { DATE_TIME_FORMAT } from '@/shared/constants/datetime';
 import type { Tour, Vehicle } from '@/shared/types';
-import { Button, DatePicker, Flex, Form, Typography } from 'antd';
+import { Button, DatePicker, Flex, Form, InputNumber, Typography } from 'antd';
 import dayjs from 'dayjs';
 import { useEffect, useState } from 'react';
 
@@ -22,7 +22,7 @@ type Props = {
 
 export const UpdateTourForm = ({ isOpen, onClose, selectedTour }: Props) => {
   const { TOUR_FORM_FIELDS } = useValidateTourFields();
-  const { bus, timeToGo, route } = TOUR_FORM_FIELDS;
+  const { bus, timeToGo, route, price } = TOUR_FORM_FIELDS;
   const [selectedBus, setSelectedBus] = useState<Vehicle | undefined>(
     undefined,
   );
@@ -144,6 +144,20 @@ export const UpdateTourForm = ({ isOpen, onClose, selectedTour }: Props) => {
           />
         </Item>
         <BusInformation selectedBus={selectedBus} />
+        <Item
+          className="mt-2 flex-1"
+          name={price?.name}
+          label={price?.label}
+          rules={price?.rules}
+        >
+          <InputNumber
+            addonAfter="VND"
+            placeholder={price?.placeholder}
+            size="large"
+            className="w-full"
+            defaultValue={0}
+          />
+        </Item>
       </Form>
     </BaseDrawer>
   );

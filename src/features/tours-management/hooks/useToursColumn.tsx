@@ -70,7 +70,9 @@ export const useToursColumn = ({ onDelete, onUpdate }: Props) => {
     title: 'Nhà xe',
     dataIndex: 'buses',
     ellipsis: true,
-    render: (buses: Tour['buses']) => <Text>{buses?.companies?.name}</Text>,
+    render: (buses: Tour['buses']) => (
+      <Text className="font-bold">{buses?.companies?.name}</Text>
+    ),
   };
 
   const ACTIONS_COLUMN: ColumnType<Tour> = {

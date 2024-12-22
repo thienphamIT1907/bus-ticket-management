@@ -45,8 +45,12 @@ export const useVehicleColumn = ({ onDelete, onUpdate }: Props) => {
   const DRIVER_COLUMN: ColumnType<Vehicle> = {
     title: 'Tài xế',
     fixed: 'right',
-    dataIndex: 'driver_id',
-    render: (driver: Vehicle['driver_id']) => <Text>{driver}</Text>,
+    dataIndex: 'drivers',
+    render: (driver: Vehicle['drivers']) => (
+      <Text>
+        {driver?.first_name} {driver?.last_name}
+      </Text>
+    ),
   };
 
   const COMFORTS_COLUMN: ColumnType<Vehicle> = {

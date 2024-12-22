@@ -18,6 +18,9 @@ export const useGetVehicle = () =>
         .select(
           `
           *,
+          drivers(
+            *
+          ),
           companies (
            *
           ),

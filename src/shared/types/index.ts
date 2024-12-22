@@ -71,6 +71,10 @@ export type Tour = Database['public']['Tables']['tours']['Row'] & {
   buses: Vehicle & { drivers: Driver };
 };
 
+export type Ticket = Database['public']['Tables']['tickets']['Row'] & {
+  tours: Tour & { routes: BusRoute; buses: Vehicle & { drivers: Driver } };
+};
+
 export type Driver = Database['public']['Tables']['drivers']['Row'];
 
 export type SummaryData = {
@@ -81,3 +85,9 @@ export type SummaryData = {
   routes?: number;
   companies?: number;
 };
+
+export enum TicketStatus {
+  Ordered = 'ORDERED',
+  Checkin = 'CHECKIN',
+  Finish = 'FINISH',
+}

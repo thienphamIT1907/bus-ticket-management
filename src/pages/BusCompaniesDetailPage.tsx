@@ -1,4 +1,3 @@
-import { TourItem } from '@/features/homepage/components/TourITem';
 import { useGetCompanyDetails } from '@/features/homepage/hooks/useGetCompanyDetails';
 import { ImagesSlider } from '@/shared/components/ImagesSlider';
 import { ScrollToTop } from '@/shared/components/ScrollToTop';
@@ -9,17 +8,17 @@ import { useParams } from 'react-router-dom';
 
 const { Text } = Typography;
 
-const ticketInfo = {
-  startPlace: 'Hanoi',
-  destinationPlace: 'Ho Chi Minh City',
-  driverName: 'Nguyen Van A',
-  busType: 'Sleeper Bus',
-  date: '2024-12-01',
-  time: '08:00 AM',
-  price: 30,
-  seatNumber: 'A12',
-  busNumber: 'VN12345',
-};
+// const ticketInfo = {
+//   startPlace: 'Hanoi',
+//   destinationPlace: 'Ho Chi Minh City',
+//   driverName: 'Nguyen Van A',
+//   busType: 'Sleeper Bus',
+//   date: '2024-12-01',
+//   time: '08:00 AM',
+//   price: 30,
+//   seatNumber: 'A12',
+//   busNumber: 'VN12345',
+// };
 
 export const BusCompaniesDetailPage = () => {
   const params = useParams();
@@ -73,14 +72,14 @@ export const BusCompaniesDetailPage = () => {
             </Flex>
           </Flex>
 
-          <Flex vertical gap={10}>
+          {/* <Flex vertical gap={10}>
             <TableTitle title="Loại xe" className="text-2xl" />
-          </Flex>
+          </Flex> */}
 
-          <Flex vertical gap={10}>
+          {/* <Flex vertical gap={10}>
             <TableTitle title="Lộ Trình Hiện Có" className="text-2xl" />
             <TourItem ticket={ticketInfo} />
-          </Flex>
+          </Flex> */}
           <Flex vertical gap={10}>
             <TableTitle title="Thư Viện Ảnh" className="text-2xl" />
             <ImagesSlider />

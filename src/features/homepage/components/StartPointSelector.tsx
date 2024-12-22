@@ -4,6 +4,7 @@ import { debounce } from 'lodash-es';
 import { BiTargetLock } from 'react-icons/bi';
 import type { ProvinceItem } from '@/features/homepage/types';
 import { renderDropdown } from '@/features/homepage/helpers';
+import { FaCheck } from 'react-icons/fa6';
 
 type StartPointSelectorProps = {
   provinces?: ProvinceItem[];
@@ -35,10 +36,10 @@ export const StartPointSelector = ({
       defaultActiveFirstOption={false}
       filterOption={false}
       className="w-full"
-      options={provinces?.map(({ name, id }) => ({
+      options={provinces?.map(({ name, id, slug }) => ({
         key: id,
         label: name,
-        value: name,
+        value: slug,
       }))}
       disabled={isLoading}
       showSearch
@@ -55,6 +56,7 @@ export const StartPointSelector = ({
       }
       onDropdownVisibleChange={handleDropdownVisibleChange}
       dropdownRender={(menu) => renderDropdown(menu, isLoading)}
+      menuItemSelectedIcon={<FaCheck className="size-5 text-green-600" />}
     />
   );
 };

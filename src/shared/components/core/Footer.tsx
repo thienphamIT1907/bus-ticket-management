@@ -17,9 +17,6 @@ export const Footer = () => (
             <Text className="cursor-pointer text-sm font-light text-gray-200 hover:underline">
               Võ Thanh Hải
             </Text>
-            <Text className="cursor-pointer text-sm font-light text-gray-200 hover:underline">
-              Đỗ Xuân Anh
-            </Text>
           </Flex>
         </Flex>
       </Col>

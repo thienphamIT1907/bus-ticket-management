@@ -12,6 +12,8 @@ import { BusComfortsManagementPage } from '@/pages/BusComfortsManagementPage';
 import { PiBuildingOffice } from 'react-icons/pi';
 import { GiDetour } from 'react-icons/gi';
 import { ToursManagementPage } from '@/pages/ToursManagementPage';
+import { IoTicketOutline } from 'react-icons/io5';
+import { TicketManagementPage } from '@/pages/TicketManagementPage';
 
 export const PRIVATE_ROUTES = [
   {
@@ -42,6 +44,10 @@ export const PRIVATE_ROUTES = [
     path: 'tour-management',
     element: <ToursManagementPage />,
   },
+  {
+    path: 'tickets-management',
+    element: <TicketManagementPage />,
+  },
 ];
 
 export const SIDEBAR_ROUTES: SideBarMenu[] = [
@@ -51,6 +57,13 @@ export const SIDEBAR_ROUTES: SideBarMenu[] = [
     title: 'Thống Kê',
     isActive: true,
     href: 'summary',
+  },
+  {
+    id: 21,
+    Icon: <IoTicketOutline size={20} />,
+    title: 'Vé Xe',
+    isActive: true,
+    href: 'tickets-management',
   },
   {
     id: 2,

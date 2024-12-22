@@ -52,7 +52,7 @@ export const UpdateDriverForm = ({
           form.resetFields();
         }
       }}
-      title={<Text className="text-2xl font-medium">Thêm Tài xế</Text>}
+      title={<Text className="text-2xl font-medium">Cập nhật Tài xế</Text>}
       open={isOpen}
       onClose={onClose}
       footer={

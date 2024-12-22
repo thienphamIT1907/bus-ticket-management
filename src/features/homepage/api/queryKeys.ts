@@ -8,4 +8,5 @@ export const QueryKeys = {
   [DataTable.COMFORTS]: 'comforts',
   [DataTable.BUSES]: 'buses',
   [DataTable.DRIVERS]: 'drivers',
+  [DataTable.TOURS]: 'tours',
 } as const;

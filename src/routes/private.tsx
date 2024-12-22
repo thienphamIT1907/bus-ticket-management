@@ -10,6 +10,8 @@ import { RoutesManagementPage } from '@/pages/RoutesManagementPage';
 import { LuLeaf } from 'react-icons/lu';
 import { BusComfortsManagementPage } from '@/pages/BusComfortsManagementPage';
 import { PiBuildingOffice } from 'react-icons/pi';
+import { GiDetour } from 'react-icons/gi';
+import { ToursManagementPage } from '@/pages/ToursManagementPage';
 
 export const PRIVATE_ROUTES = [
   {
@@ -36,11 +38,15 @@ export const PRIVATE_ROUTES = [
     path: 'bus-comforts-management',
     element: <BusComfortsManagementPage />,
   },
+  {
+    path: 'tour-management',
+    element: <ToursManagementPage />,
+  },
 ];
 
 export const SIDEBAR_ROUTES: SideBarMenu[] = [
   {
-    id: 1,
+    id: 'summary',
     Icon: <GrPieChart size={20} />,
     title: 'Thống Kê',
     isActive: true,
@@ -54,29 +60,35 @@ export const SIDEBAR_ROUTES: SideBarMenu[] = [
     href: 'routes-management',
   },
   {
-    id: 3,
+    id: 'tour-management',
+    Icon: <GiDetour size={20} />,
+    title: 'Lộ Trình',
+    isActive: true,
+    href: 'tour-management',
+  },
+  {
+    id: 'bus-companies-management',
     Icon: <PiBuildingOffice size={20} />,
     title: 'Nhà Xe',
     isActive: true,
     href: 'bus-companies-management',
   },
   {
-    id: 4,
+    id: 'driver-management',
     Icon: <GrUserPolice size={20} />,
     title: 'Tài Xế',
     isActive: true,
     href: 'driver-management',
   },
   {
-    id: 5,
+    id: 'vehicle-management',
     Icon: <TbBus size={20} />,
     title: 'Phương Tiện',
     isActive: true,
     href: 'vehicle-management',
   },
   {
-    id: 6,
-
+    id: 'bus-comforts-management',
     Icon: <LuLeaf size={20} />,
     title: 'Tiện Ích',
     isActive: true,

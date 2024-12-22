@@ -231,6 +231,92 @@ export type Database = {
         };
         Relationships: [];
       };
+      tickets: {
+        Row: {
+          checkin_at: string | null;
+          client_email: string | null;
+          client_name: string | null;
+          client_phone: string | null;
+          code: string | null;
+          created_at: string;
+          id: string;
+          price: number | null;
+          status: string | null;
+          tour_id: string | null;
+        };
+        Insert: {
+          checkin_at?: string | null;
+          client_email?: string | null;
+          client_name?: string | null;
+          client_phone?: string | null;
+          code?: string | null;
+          created_at?: string;
+          id?: string;
+          price?: number | null;
+          status?: string | null;
+          tour_id?: string | null;
+        };
+        Update: {
+          checkin_at?: string | null;
+          client_email?: string | null;
+          client_name?: string | null;
+          client_phone?: string | null;
+          code?: string | null;
+          created_at?: string;
+          id?: string;
+          price?: number | null;
+          status?: string | null;
+          tour_id?: string | null;
+        };
+        Relationships: [
+          {
+            foreignKeyName: 'tickets_tour_id_fkey';
+            columns: ['tour_id'];
+            isOneToOne: false;
+            referencedRelation: 'tours';
+            referencedColumns: ['id'];
+          },
+        ];
+      };
+      tours: {
+        Row: {
+          bus_id: string | null;
+          created_at: string;
+          id: string;
+          route_id: string | null;
+          time_to_go: string | null;
+        };
+        Insert: {
+          bus_id?: string | null;
+          created_at?: string;
+          id?: string;
+          route_id?: string | null;
+          time_to_go?: string | null;
+        };
+        Update: {
+          bus_id?: string | null;
+          created_at?: string;
+          id?: string;
+          route_id?: string | null;
+          time_to_go?: string | null;
+        };
+        Relationships: [
+          {
+            foreignKeyName: 'tours_bus_id_fkey';
+            columns: ['bus_id'];
+            isOneToOne: false;
+            referencedRelation: 'buses';
+            referencedColumns: ['id'];
+          },
+          {
+            foreignKeyName: 'tours_route_id_fkey';
+            columns: ['route_id'];
+            isOneToOne: false;
+            referencedRelation: 'routes';
+            referencedColumns: ['id'];
+          },
+        ];
+      };
     };
     Views: {
       [_ in never]: never;
@@ -243,12 +329,6 @@ export type Database = {
       fetchtotal: {
         Args: Record<PropertyKey, never>;
         Returns: Json;
-      };
-      greet: {
-        Args: {
-          name: string;
-        };
-        Returns: string;
       };
       hello_world: {
         Args: Record<PropertyKey, never>;

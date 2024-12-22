@@ -1,6 +1,6 @@
 export enum DATE_TIME_FORMAT {
   DD_MM_YYYY = 'DD/MM/YYYY',
-  DateTime = 'DD MMM, YYYY hh:mm A',
+  DD_MM_YYYY_HH_MM_SS = 'DD/MM/YYYY | HH:mm',
   Default = 'MM/DD/YYYY',
   Hour = 'hh:mm A',
   Payload = 'YYYY-MM-DD',

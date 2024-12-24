@@ -2,7 +2,7 @@ import type { MonthsInYear } from '@/shared/types';
 import { v4 as uuidv4 } from 'uuid';
 
 export const upperCaseFirstLetter = (str: string): string =>
-  str.charAt(0).toUpperCase() + str.slice(1);
+  str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 
 export const getMonthFromString = (mon: MonthsInYear) =>
   new Date(Date.parse(`${mon} 1, 2000`)).getMonth() + 1;
@@ -35,3 +35,6 @@ export const normalizeLocationToSlug = (location?: string | null) => {
 
   return result;
 };
+
+export const formatCurrency = (value?: number) =>
+  value ? new Intl.NumberFormat('en-US').format(value) : value;

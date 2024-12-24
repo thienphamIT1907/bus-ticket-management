@@ -51,7 +51,9 @@ export enum DataTable {
   TOURS = 'tours',
 }
 
-export type BusCompany = Database['public']['Tables']['companies']['Row'];
+export type BusCompany = Database['public']['Tables']['companies']['Row'] & {
+  buses?: Vehicle[];
+};
 
 export type BusRoute = Database['public']['Tables']['routes']['Row'];
 
@@ -59,6 +61,7 @@ export type BusComfort = Database['public']['Tables']['comforts']['Row'];
 
 export type Vehicle = Database['public']['Tables']['buses']['Row'] & {
   drivers?: Driver;
+  tours?: Tour[];
   companies?: BusCompany;
   comforts?: string[];
   buses_comforts?: {
@@ -89,5 +92,6 @@ export type SummaryData = {
 export enum TicketStatus {
   Ordered = 'ORDERED',
   Checkin = 'CHECKIN',
-  Finish = 'FINISH',
+  Finish = 'FINISHED',
+  Cancelled = 'CANCELLED',
 }

@@ -1,4 +1,5 @@
 import type { Tour } from '@/shared/types';
+import { formatCurrency } from '@/shared/utils';
 import { Divider, Flex, Typography } from 'antd';
 
 const { Text } = Typography;
@@ -46,7 +47,9 @@ export const TicketInformation = ({ selectedTour }: Props) => (
         <Divider className="my-2" />
         <Flex justify="space-between">
           <Text className="text-lg font-bold">Giá</Text>
-          <Text className="text-lg font-bold">{selectedTour?.price} VND</Text>
+          <Text className="text-lg font-bold">
+            {formatCurrency(selectedTour?.price || 0)} VND
+          </Text>
         </Flex>
       </Flex>
     ) : null}

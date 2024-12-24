@@ -51,6 +51,8 @@ export const SummaryPage = () => {
           <Col lg={12} md={24} xl={8}>
             <HighLevelDriverWidget />
           </Col>
+          {/* Top nha xe duoc yeu thich chart */}
+          {/* 1 chart la list danh sach giong list congty ben portfolio */}
         </Row>
       </Flex>
     </>

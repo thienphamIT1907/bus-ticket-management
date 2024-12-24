@@ -7,7 +7,7 @@ import { useState } from 'react';
 
 type Props = {
   closeTicketModal: () => void;
-  closeTourListmodal: () => void;
+  closeTourListmodal?: () => void;
   onOpenQRModal: () => void;
 };
 
@@ -38,7 +38,7 @@ export const useOrderTicket = ({
     });
     setIsOrdering(false);
     closeTicketModal();
-    closeTourListmodal();
+    closeTourListmodal?.();
     onOpenQRModal();
   };
   return {

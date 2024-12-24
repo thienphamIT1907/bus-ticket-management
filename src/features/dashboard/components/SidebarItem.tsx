@@ -31,13 +31,20 @@ const SidebarItem = ({
           <Link to={href}>
             <div
               className={cn(
-                'mt-1 flex w-full items-center justify-start gap-x-4 rounded-lg p-4 transition-all',
+                'mt-1 flex w-full items-center justify-start gap-x-4 rounded-lg p-4 font-bold transition-all',
                 pathname?.split('/')?.at(2) === href
                   ? 'bg-[#d84f57] text-white shadow-md shadow-[#f3969c]'
                   : 'transition-all hover:bg-gray-200',
               )}
             >
-              <span className="max-w-6">{Icon}</span>
+              <span
+                className={cn(
+                  '',
+                  pathname?.split('/')?.at(2) === href && 'animate-bounce',
+                )}
+              >
+                {Icon}
+              </span>
 
               <span
                 className={cn(

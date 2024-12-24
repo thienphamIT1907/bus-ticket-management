@@ -7,6 +7,7 @@ import type { Tour } from '@/shared/types';
 import dayjs from 'dayjs';
 import { DATE_TIME_FORMAT } from '@/shared/constants/datetime';
 import { PiBuildingOffice } from 'react-icons/pi';
+import { formatCurrency } from '@/shared/utils';
 
 const { Text } = Typography;
 
@@ -35,7 +36,7 @@ export const TourItem = ({ tour, onClick }: Props) => (
         </Text>
 
         <Text className="text-xl font-bold underline">
-          {tour?.price || 0} VND
+          {formatCurrency(tour?.price || 0)} VND
         </Text>
       </Flex>
       <Flex align="center" className="space-x-2 text-gray-600">

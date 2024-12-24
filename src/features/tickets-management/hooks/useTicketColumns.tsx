@@ -1,5 +1,7 @@
-import type { Ticket } from '@/shared/types';
-import { Typography } from 'antd';
+import { TicketStatusTag } from '@/features/tickets-management/components/TicketStatusTag';
+import { TicketStatus, type Ticket } from '@/shared/types';
+import { formatCurrency } from '@/shared/utils';
+import { Button, Typography } from 'antd';
 import type { ColumnGroupType, ColumnType } from 'antd/es/table';
 
 const { Text } = Typography;
@@ -45,7 +47,9 @@ export const useTicketColumns = () => {
     ellipsis: true,
     width: 100,
     align: 'right',
-    render: (price) => <Text className="font-medium">{price} VND</Text>,
+    render: (price) => (
+      <Text className="font-bold">{formatCurrency(Number(price))} VND</Text>
+    ),
   };
   const CODE: ColumnType<Ticket> = {
     title: 'Code',
@@ -65,14 +69,21 @@ export const useTicketColumns = () => {
     dataIndex: 'status',
     ellipsis: true,
     width: 100,
-    render: (status) => <Text>{status}</Text>,
+    render: (status) => <TicketStatusTag status={status} />,
   };
-  // const ACTIONS_COLUMN: ColumnType<Ticket> = {
-  //   title: '',
-  //   width: 100,
-  //   fixed: 'right',
-  //   render: () => <>Act</>,
-  // };
+  const ACTIONS_COLUMN: ColumnType<Ticket> = {
+    title: '',
+    width: 100,
+    fixed: 'right',
+    render: (_, record: Ticket) => {
+      const disableStatus = [TicketStatus.Cancelled, TicketStatus.Finish];
+      const hasDisabled = disableStatus.includes(
+        record?.status as TicketStatus,
+      );
+
+      return <Button disabled={hasDisabled}>Huỷ vé</Button>;
+    },
+  };
 
   const columns = [
     TOUR_COLUMN,
@@ -83,6 +94,7 @@ export const useTicketColumns = () => {
     CODE,
     CHECKIN_AT_COLUMN,
     STATUS_COLUMN,
+    ACTIONS_COLUMN,
   ];
 
   return {

@@ -15,7 +15,7 @@ type Props = {
   selectedTour?: Tour;
   isOpen: boolean;
   onClose: () => void;
-  closeTourListModal: () => void;
+  closeTourListModal?: () => void;
 };
 
 export const OrderTicketModal = ({
@@ -32,7 +32,7 @@ export const OrderTicketModal = ({
 
   const { handleOrderTicket, isOrdering, form } = useOrderTicket({
     closeTicketModal: onClose,
-    closeTourListmodal: closeTourListModal,
+    closeTourListmodal: closeTourListModal || undefined,
     onOpenQRModal,
   });
 

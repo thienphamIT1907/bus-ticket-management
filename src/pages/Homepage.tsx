@@ -9,7 +9,6 @@ const { Text, Title } = Typography;
 export const Homepage = () => (
   <>
     <div className="bg-[#c35959]">
-      {/* Image cover */}
       <Flex
         vertical
         justify="center"

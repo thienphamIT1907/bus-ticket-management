@@ -1,31 +1,65 @@
+import { useGetToursByCompany } from '@/features/bus-companies-management/hooks/useGetToursByCompany';
+import { OrderTicketModal } from '@/features/homepage/components/OrderTicketModal';
+import { TourItem } from '@/features/homepage/components/TourITem';
 import { useGetCompanyDetails } from '@/features/homepage/hooks/useGetCompanyDetails';
 import { ImagesSlider } from '@/shared/components/ImagesSlider';
 import { ScrollToTop } from '@/shared/components/ScrollToTop';
 import { TableTitle } from '@/shared/components/TableTitle';
-import { Flex, Image, Spin, Typography } from 'antd';
+import { useToggle } from '@/shared/hooks';
+import type { Tour } from '@/shared/types';
+import { Empty, Flex, Image, Spin, Typography } from 'antd';
+import { useState } from 'react';
 import { BsBusFront } from 'react-icons/bs';
 import { useParams } from 'react-router-dom';
 
 const { Text } = Typography;
 
-// const ticketInfo = {
-//   startPlace: 'Hanoi',
-//   destinationPlace: 'Ho Chi Minh City',
-//   driverName: 'Nguyen Van A',
-//   busType: 'Sleeper Bus',
-//   date: '2024-12-01',
-//   time: '08:00 AM',
-//   price: 30,
-//   seatNumber: 'A12',
-//   busNumber: 'VN12345',
-// };
-
 export const BusCompaniesDetailPage = () => {
   const params = useParams();
+  const companyId = params?.id;
+  const [selectedTour, setSelectedTour] = useState<Tour | undefined>(undefined);
 
   const { companyDetails, isFetching } = useGetCompanyDetails({
-    companyId: params?.id,
+    companyId,
   });
+
+  const {
+    open: isOpenTicketModal,
+    onOpen: openTicketModal,
+    onClose: closeTicketModal,
+  } = useToggle();
+
+  const handleOrderTicket = (selectedTour: Tour) => {
+    setSelectedTour(selectedTour);
+    openTicketModal();
+  };
+
+  const { data } = useGetToursByCompany({
+    companyId,
+  });
+
+  const handleCloseTicketModal = () => {
+    setSelectedTour(undefined);
+    closeTicketModal();
+  };
+
+  const renderTours = () =>
+    data?.map((item) => {
+      const buses = item?.buses;
+      return buses?.map((bus) => {
+        const tours = bus?.tours;
+
+        if (!bus?.tours?.length) return <Empty key={bus?.id} />;
+
+        return tours?.map((tour) => (
+          <TourItem
+            tour={tour}
+            key={bus?.id}
+            onClick={() => handleOrderTicket(tour)}
+          />
+        ));
+      });
+    });
 
   return (
     <>
@@ -72,20 +106,21 @@ export const BusCompaniesDetailPage = () => {
             </Flex>
           </Flex>
 
-          {/* <Flex vertical gap={10}>
-            <TableTitle title="Loại xe" className="text-2xl" />
-          </Flex> */}
-
-          {/* <Flex vertical gap={10}>
-            <TableTitle title="Lộ Trình Hiện Có" className="text-2xl" />
-            <TourItem ticket={ticketInfo} />
-          </Flex> */}
+          <Flex vertical gap={20}>
+            <TableTitle title="Chuyến Xe Hiện Có" className="text-2xl" />
+            <>{renderTours()}</>
+          </Flex>
           <Flex vertical gap={10}>
             <TableTitle title="Thư Viện Ảnh" className="text-2xl" />
             <ImagesSlider />
           </Flex>
         </Flex>
       </Spin>
+      <OrderTicketModal
+        isOpen={isOpenTicketModal}
+        onClose={handleCloseTicketModal}
+        selectedTour={selectedTour}
+      />
     </>
   );
 };

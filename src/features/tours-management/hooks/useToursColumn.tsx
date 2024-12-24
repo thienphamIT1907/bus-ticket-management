@@ -1,6 +1,7 @@
 import { TableActions } from '@/shared/components/core/TableActions';
 import { DATE_TIME_FORMAT } from '@/shared/constants/datetime';
 import type { Tour } from '@/shared/types';
+import { formatCurrency } from '@/shared/utils';
 import { Flex, Typography } from 'antd';
 import type { ColumnGroupType, ColumnType } from 'antd/es/table';
 import dayjs from 'dayjs';
@@ -81,7 +82,7 @@ export const useToursColumn = ({ onDelete, onUpdate }: Props) => {
     ellipsis: true,
     fixed: 'right',
     render: (price: Tour['price']) => (
-      <Text className="font-bold">{price || 0} VND</Text>
+      <Text className="font-bold">{formatCurrency(price || 0)} VND</Text>
     ),
   };
 

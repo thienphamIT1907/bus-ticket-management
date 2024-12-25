@@ -1,7 +1,7 @@
 import { TicketStatusTag } from '@/features/tickets-management/components/TicketStatusTag';
 import { TicketStatus, type Ticket } from '@/shared/types';
 import { formatCurrency } from '@/shared/utils';
-import { Button, Typography } from 'antd';
+import { Button, Flex, Typography } from 'antd';
 import type { ColumnGroupType, ColumnType } from 'antd/es/table';
 
 const { Text } = Typography;
@@ -69,7 +69,12 @@ export const useTicketColumns = () => {
     dataIndex: 'status',
     ellipsis: true,
     width: 100,
-    render: (status) => <TicketStatusTag status={status} />,
+    fixed: 'right',
+    render: (status) => (
+      <>
+        <TicketStatusTag status={status} />
+      </>
+    ),
   };
   const ACTIONS_COLUMN: ColumnType<Ticket> = {
     title: '',
@@ -77,11 +82,19 @@ export const useTicketColumns = () => {
     fixed: 'right',
     render: (_, record: Ticket) => {
       const disableStatus = [TicketStatus.Cancelled, TicketStatus.Finish];
-      const hasDisabled = disableStatus.includes(
+      const canCancelTicket = disableStatus.includes(
         record?.status as TicketStatus,
       );
+      const canFinishTicket = record?.status === TicketStatus.Checkin;
 
-      return <Button disabled={hasDisabled}>Huỷ vé</Button>;
+      return (
+        <Flex gap={6}>
+          <Button disabled={canCancelTicket}>Huỷ vé</Button>
+          <Button hidden={!canFinishTicket} type="primary">
+            Hoàn thành
+          </Button>
+        </Flex>
+      );
     },
   };
 

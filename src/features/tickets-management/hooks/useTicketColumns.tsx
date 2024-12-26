@@ -1,12 +1,17 @@
 import { TicketStatusTag } from '@/features/tickets-management/components/TicketStatusTag';
 import { TicketStatus, type Ticket } from '@/shared/types';
 import { formatCurrency } from '@/shared/utils';
-import { Button, Flex, Typography } from 'antd';
+import { Button, Flex, Tooltip, Typography } from 'antd';
 import type { ColumnGroupType, ColumnType } from 'antd/es/table';
+import { BsQrCodeScan } from 'react-icons/bs';
 
 const { Text } = Typography;
 
-export const useTicketColumns = () => {
+type Props = {
+  handleOpenQRCodeModal: (selectedTicket: Ticket) => void;
+};
+
+export const useTicketColumns = ({ handleOpenQRCodeModal }: Props) => {
   const TOUR_COLUMN: ColumnType<Ticket> = {
     title: 'Lộ Trình',
     dataIndex: 'tours',
@@ -55,7 +60,21 @@ export const useTicketColumns = () => {
     title: 'Code',
     dataIndex: 'code',
     ellipsis: true,
-    render: (code) => <Text className="underline">{code}</Text>,
+    render: (code: Ticket['code'], record: Ticket) => (
+      <Flex justify="flex-start" align="center" gap={6}>
+        <BsQrCodeScan
+          onClick={() => handleOpenQRCodeModal(record)}
+          className="cursor-pointer duration-200 hover:scale-150 hover:text-[#c35959]"
+        />
+        <Tooltip title={code} placement="bottom">
+          <>
+            <Text className="cursor-pointer underline duration-150 ease-in-out hover:text-[#c35959]">
+              {code?.slice(0, 15)}...
+            </Text>
+          </>
+        </Tooltip>
+      </Flex>
+    ),
   };
   const CHECKIN_AT_COLUMN: ColumnType<Ticket> = {
     title: 'Checkin',

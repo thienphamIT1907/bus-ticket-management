@@ -9,21 +9,33 @@ type Props = {
   isOpen: boolean;
   onClose: () => void;
   value?: string;
+  showHint?: boolean;
+  title?: string;
 };
 
-export const TicketCodeQRModal = ({ isOpen, onClose, value }: Props) => {
+export const TicketCodeQRModal = ({
+  isOpen,
+  onClose,
+  value,
+  showHint = true,
+  title,
+}: Props) => {
   const [isDisabled, setIsDisabled] = useState(true);
 
   return (
     <Modal
-      title={<Text className="text-2xl font-bold">Mã vé xe của bạn</Text>}
+      title={
+        <Text className="text-2xl font-bold">
+          {title || 'Mã vé xe của bạn'}
+        </Text>
+      }
       centered
       open={isOpen}
       onCancel={onClose}
-      closable={false}
+      closable={!showHint}
       maskClosable={false}
       footer={
-        <Flex justify="space-between" align="center">
+        <Flex justify="space-between" align="center" hidden={!showHint}>
           <Checkbox
             defaultChecked={false}
             onChange={(e) => {
@@ -56,6 +68,7 @@ export const TicketCodeQRModal = ({ isOpen, onClose, value }: Props) => {
         justify="flex-start"
         align="baseline"
         gap={10}
+        hidden={!showHint}
         className="w-full rounded-xl border border-solid border-yellow-300 bg-yellow-50 p-4 text-base"
       >
         <FaRegLightbulb />

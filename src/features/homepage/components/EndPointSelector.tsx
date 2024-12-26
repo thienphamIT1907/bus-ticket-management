@@ -41,7 +41,6 @@ export const EndPointSelector = ({
         label: item.name,
         value: item?.slug,
       }))}
-      disabled={isLoading}
       showSearch
       allowClear
       onSearch={handleSearch}

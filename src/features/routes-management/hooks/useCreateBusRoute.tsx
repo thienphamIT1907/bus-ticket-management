@@ -1,8 +1,7 @@
 import { QueryKeys } from '@/features/homepage/api/queryKeys';
+import type { ProvinceItem } from '@/features/homepage/types';
 import { useToast } from '@/shared/hooks';
-import type { BusRoute } from '@/shared/types';
-import { DataTable } from '@/shared/types';
-import { normalizeLocationToSlug } from '@/shared/utils';
+import { DataTable, type BusRoute } from '@/shared/types';
 import supabase from '@/shared/utils/supbabase';
 import { useQueryClient } from '@tanstack/react-query';
 import { Form } from 'antd';
@@ -12,9 +11,10 @@ const { useForm } = Form;
 
 type Props = {
   onClose: () => void;
+  provinces?: ProvinceItem[];
 };
 
-export const useCreateBusRoute = ({ onClose }: Props) => {
+export const useCreateBusRoute = ({ onClose, provinces }: Props) => {
   const [form] = useForm<BusRoute>();
   const { showToast } = useToast();
   const [isCreating, setIsCreating] = useState(false);
@@ -26,8 +26,15 @@ export const useCreateBusRoute = ({ onClose }: Props) => {
     const { error } = await supabase.from(DataTable.ROUTES).insert({
       ...newRoute,
       is_active: true,
-      start_slug: normalizeLocationToSlug(newRoute?.start_point),
-      end_slug: normalizeLocationToSlug(newRoute.end_point),
+      start_point: provinces?.filter(
+        (province) => province?.slug === newRoute?.start_point,
+      )?.[0]?.name,
+      end_point: provinces?.filter(
+        (province) => province?.slug === newRoute?.end_point,
+      )?.[0]?.name,
+
+      start_slug: newRoute?.start_point,
+      end_slug: newRoute.end_point,
     });
 
     if (error) {

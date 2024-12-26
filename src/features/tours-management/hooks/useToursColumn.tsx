@@ -24,11 +24,11 @@ export const useToursColumn = ({ onDelete, onUpdate }: Props) => {
     ),
   };
   const DISTANCE_COLUMN: ColumnType<Tour> = {
-    title: 'Khoảng cách (km)',
+    title: 'Khoảng cách',
     dataIndex: 'routes',
     align: 'right',
     ellipsis: true,
-    render: (routes: Tour['routes']) => <Text>{routes?.est_distance}</Text>,
+    render: (routes: Tour['routes']) => <Text>{routes?.est_distance} km</Text>,
   };
   const BUS_COLUMN: ColumnType<Tour> = {
     title: 'Phương tiện',

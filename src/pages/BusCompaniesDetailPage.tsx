@@ -43,13 +43,23 @@ export const BusCompaniesDetailPage = () => {
     closeTicketModal();
   };
 
-  const renderTours = () =>
-    data?.map((item) => {
-      const buses = item?.buses;
-      return buses?.map((bus) => {
-        const tours = bus?.tours;
+  const renderTours = () => {
+    if (!data?.length) return <Empty />;
 
-        if (!bus?.tours?.length) return <Empty key={bus?.id} />;
+    return data?.map((item) => {
+      const buses = item?.buses;
+      const busHasTours = buses?.filter((bus) => bus?.tours?.length);
+
+      if (!busHasTours?.length)
+        return (
+          <Empty
+            description="Không có chuyến xe trong hệ thống."
+            key={item?.id}
+          />
+        );
+
+      return busHasTours?.map((bus) => {
+        const tours = bus?.tours;
 
         return tours?.map((tour) => (
           <TourItem
@@ -60,6 +70,7 @@ export const BusCompaniesDetailPage = () => {
         ));
       });
     });
+  };
 
   return (
     <>

@@ -1,4 +1,5 @@
-import { Button } from 'antd';
+import { Logo } from '@/shared/components/core/Logo';
+import { Button, Flex } from 'antd';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -7,10 +8,11 @@ export const Header = () => {
 
   return (
     <header className="sticky left-0 top-0 z-50 w-full bg-[#c35959] px-60 text-white">
-      <div className="container mx-auto flex items-center justify-between py-4">
-        <div className="text-xl font-bold">
+      <div className="container mx-auto flex max-w-4xl items-center justify-between py-4">
+        <Flex className="text-2xl font-medium" align="center" gap={10}>
+          <Logo className="size-7 text-white" />
           <Link to="/">CS447Bus</Link>
-        </div>
+        </Flex>
 
         {/* Hamburger Menu (Mobile) */}
         <Button

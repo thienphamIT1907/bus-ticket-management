@@ -16,6 +16,7 @@ export const StartPointSelector = ({
   provinces,
   setQuery,
   isLoading,
+  showSearch,
   ...props
 }: StartPointSelectorProps) => {
   const handleDropdownVisibleChange = (open: boolean) => {
@@ -42,7 +43,7 @@ export const StartPointSelector = ({
         value: slug,
       }))}
       disabled={isLoading}
-      showSearch
+      showSearch={showSearch}
       allowClear
       onSearch={handleSearch}
       placeholder="Chọn điểm xuất phát..."

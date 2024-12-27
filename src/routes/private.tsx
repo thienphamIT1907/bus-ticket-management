@@ -48,6 +48,9 @@ export const PRIVATE_ROUTES = [
     path: 'tickets-management',
     element: <TicketManagementPage />,
   },
+  {
+    path: 'checkin-qr',
+  },
 ];
 
 export const SIDEBAR_ROUTES: SideBarMenu[] = [

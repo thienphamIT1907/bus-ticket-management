@@ -6,6 +6,7 @@ import { useSession } from '@/features/auth/hooks/useSession';
 import { LoadingPanel } from '@/shared/components/LoadingPanel';
 import { useLayoutEffect } from 'react';
 import { WrappedOutlet } from '@/layouts/WrappedOutlet';
+import { CheckinQRPage } from '@/pages/mobile/CheckinQRPage';
 
 export const PrivateLayout = () => {
   const navigate = useNavigate();
@@ -21,6 +22,10 @@ export const PrivateLayout = () => {
       navigate('/dashboard/summary');
     }
   }, [location.pathname, navigate]);
+
+  if (location.pathname === '/dashboard/checkin-qr') {
+    return <CheckinQRPage />;
+  }
 
   return (
     <>

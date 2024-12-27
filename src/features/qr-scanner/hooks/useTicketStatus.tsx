@@ -35,6 +35,7 @@ export const useTicketStatus = () => {
       .from(DataTable.TICKETS)
       .update({
         status,
+        ...(status === TicketStatus.Checkin ? { checkin_at: new Date() } : {}),
       })
       .eq('id', selectedTicket?.id);
 

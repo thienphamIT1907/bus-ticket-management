@@ -1,50 +1,42 @@
+import { Flex, Typography } from 'antd';
 import EChartsReact from 'echarts-for-react';
+
+const { Text } = Typography;
 
 export const HighLevelDriverWidget = () => {
   const option = {
-    tooltip: {
-      trigger: 'item',
+    xAxis: {
+      type: 'category',
+      data: ['1 năm', '3 năm', '5 năm', '7 năm', '9 năm'],
     },
-    legend: {
-      x: 'center',
-      y: 'bottom',
-      orient: 'horizontal',
+    yAxis: {
+      type: 'value',
     },
     series: [
       {
-        type: 'pie',
-        radius: ['40%', '70%'],
-        avoidLabelOverlap: true,
-        center: ['50%', '40%'],
-        padAngle: 5,
-        itemStyle: {
-          borderRadius: 10,
-        },
+        data: [3, 5, 2, 8, 4],
+        type: 'bar',
+        barWidth: 40,
         label: {
-          show: false,
-          position: 'center',
+          show: true,
+          fontSize: 14,
         },
-        emphasis: {
-          label: {
-            show: false,
-          },
+        tooltip: {
+          position: ['50%', '50%'],
         },
-        labelLine: {
-          show: false,
+        itemStyle: {
+          color: '#d84f57',
+          borderRadius: [5, 5, 0, 0],
         },
-        data: [
-          { value: 1048, name: 'Search Engine' },
-          { value: 735, name: 'Direct' },
-          { value: 580, name: 'Email' },
-          { value: 484, name: 'Union Ads' },
-          { value: 300, name: 'Video Ads' },
-        ],
       },
     ],
   };
   return (
-    <div className="rounded-xl border border-solid border-gray-200">
-      <EChartsReact option={option} className="h-full" />
-    </div>
+    <Flex vertical>
+      <Text className="p-1 text-2xl font-bold">Kinh nghiệm tài xế</Text>
+      <div className="rounded-xl border border-solid border-gray-200">
+        <EChartsReact option={option} className="h-full" />
+      </div>
+    </Flex>
   );
 };

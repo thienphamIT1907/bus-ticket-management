@@ -46,14 +46,18 @@ export const SummaryPage = () => {
 
         <Row gutter={[24, 24]}>
           <Col lg={12} md={24} xl={16}>
-            <BusesOfCompanyWidget />
-          </Col>
-          <Col lg={12} md={24} xl={8}>
             <HighLevelDriverWidget />
           </Col>
-          {/* Top nha xe duoc yeu thich chart */}
-          {/* 1 chart la list danh sach giong list congty ben portfolio */}
+          <Col lg={12} md={24} xl={8}>
+            <BusesOfCompanyWidget />
+          </Col>
         </Row>
+        {/* <Row gutter={[24, 24]}>
+          <Col lg={12} md={12} xl={12}>
+            <BestToursWidget />
+          </Col>
+          <Col lg={12} md={12} xl={12} />
+        </Row> */}
       </Flex>
     </>
   );

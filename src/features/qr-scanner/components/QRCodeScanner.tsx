@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { BrowserMultiFormatReader } from '@zxing/library';
-import { Divider, Flex, Spin, Typography } from 'antd';
+import { Button, Divider, Flex, Spin, Typography } from 'antd';
 import { useGetTicketDetails } from '@/features/qr-scanner/hooks/useGetTicketDetails';
 import type { Ticket } from '@/shared/types';
 
@@ -14,12 +14,6 @@ const QRCodeScanner = () => {
   const [ticketDetails, setTicketDetails] = useState<Ticket | undefined>(
     undefined,
   );
-
-  useEffect(() => {
-    setTimeout(() => {
-      setQrResult('CS447BUS-62579345-611b-43fb-aee6-fc266e9d9bde');
-    }, 5000);
-  }, []);
 
   useEffect(() => {
     const stopCamera = () => {
@@ -75,7 +69,7 @@ const QRCodeScanner = () => {
       <h1 className="mt-6 text-center font-bold">Checkin Vé Xe</h1>
       <video
         ref={videoRef}
-        className="mx-auto size-60 rounded-lg border border-solid border-gray-200 p-1"
+        className="mx-auto size-80 rounded-lg border border-solid border-gray-200 py-1"
       >
         <track default kind="captions" srcLang="en" src="SUBTITLE_PATH" />
       </video>
@@ -92,31 +86,46 @@ const QRCodeScanner = () => {
       ) : null}
 
       {/* Ticket Information */}
-      <Spin spinning={isLoadingDetails}>
-        {ticketDetails ? (
-          <Flex
-            vertical
-            className="mt-4 rounded-xl border border-solid border-gray-200 bg-gray-50 px-4 py-2"
-            gap={4}
-          >
-            <Flex justify="space-between">
-              <Text className="font-bold">Khách hàng</Text>
-              <Text>{ticketDetails?.client_name}</Text>
-            </Flex>
-            <Flex justify="space-between">
-              <Text className="font-bold">SDT</Text>
-              <Text className="underline">{ticketDetails?.client_phone}</Text>
-            </Flex>
-            <Divider className="my-2" />
-            <Flex justify="space-between">
-              <Text className="text-base font-bold">Giá vé</Text>
-              <Text className="text-base font-bold underline">
-                {ticketDetails?.price}
-              </Text>
-            </Flex>
-          </Flex>
-        ) : null}
-      </Spin>
+      {isLoadingDetails ? (
+        <Spin spinning />
+      ) : (
+        <>
+          {ticketDetails ? (
+            <>
+              <Flex
+                vertical
+                className="mt-4 w-[90%] rounded-xl border border-solid border-gray-200 bg-gray-50 px-4 py-2"
+                gap={4}
+                justify="center"
+              >
+                <Flex justify="space-between">
+                  <Text className="font-bold">Khách hàng</Text>
+                  <Text>{ticketDetails?.client_name}</Text>
+                </Flex>
+                <Flex justify="space-between">
+                  <Text className="font-bold">SDT</Text>
+                  <Text className="underline">
+                    {ticketDetails?.client_phone}
+                  </Text>
+                </Flex>
+                <Divider className="my-2" />
+                <Flex justify="space-between">
+                  <Text className="text-base font-bold">Giá vé</Text>
+                  <Text className="text-base font-bold underline">
+                    {ticketDetails?.price}
+                  </Text>
+                </Flex>
+              </Flex>
+              <Flex justify="center" align="center" gap={10}>
+                <Button size="large" type="primary">
+                  Checkin
+                </Button>
+                <Button size="large">Huỷ vé</Button>
+              </Flex>
+            </>
+          ) : null}
+        </>
+      )}
     </Flex>
   );
 };

@@ -24,6 +24,7 @@ export const useGetTicketDetails = () => {
       });
       throw new Error(error.message);
     }
+    setIsLoadingDetails(false);
     return data as Ticket;
   };
 

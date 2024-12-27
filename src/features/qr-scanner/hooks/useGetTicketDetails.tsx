@@ -20,7 +20,7 @@ export const useGetTicketDetails = () => {
       showToast({
         type: 'error',
         message: 'Error',
-        description: error.message,
+        description: `Mã QR không hợp lệ!`,
       });
       throw new Error(error.message);
     }

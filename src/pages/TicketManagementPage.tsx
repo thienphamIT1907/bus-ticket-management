@@ -1,3 +1,4 @@
+import { useTicketStatus } from '@/features/qr-scanner/hooks/useTicketStatus';
 import { TicketCodeQRModal } from '@/features/tickets-management/components/TicketCodeQRModal';
 import { useGetTickets } from '@/features/tickets-management/hooks/useGetTickets';
 import { useTicketColumns } from '@/features/tickets-management/hooks/useTicketColumns';
@@ -13,6 +14,8 @@ export const TicketManagementPage = () => {
   const [selectedTicket, setSelectedTicket] = useState<Ticket | undefined>(
     undefined,
   );
+
+  const { isLoading, handleSetTicketStatus } = useTicketStatus();
 
   const {
     onClose: closeQRCodeModal,
@@ -32,6 +35,8 @@ export const TicketManagementPage = () => {
 
   const { columns } = useTicketColumns({
     handleOpenQRCodeModal,
+    handleSetTicketStatus,
+    isLoading,
   });
 
   return (

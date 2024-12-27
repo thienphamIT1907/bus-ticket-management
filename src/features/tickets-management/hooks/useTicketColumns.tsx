@@ -1,8 +1,10 @@
 import { TicketStatusTag } from '@/features/tickets-management/components/TicketStatusTag';
+import { DATE_TIME_FORMAT } from '@/shared/constants/datetime';
 import { TicketStatus, type Ticket } from '@/shared/types';
 import { formatCurrency } from '@/shared/utils';
 import { Button, Flex, Tooltip, Typography } from 'antd';
 import type { ColumnGroupType, ColumnType } from 'antd/es/table';
+import dayjs from 'dayjs';
 import { BsQrCodeScan } from 'react-icons/bs';
 
 const { Text } = Typography;
@@ -91,7 +93,13 @@ export const useTicketColumns = ({
     dataIndex: 'checkin_at',
     ellipsis: true,
     width: 100,
-    render: (checkinAt) => <Text>{checkinAt || '-'}</Text>,
+    render: (checkinAt) => (
+      <Text>
+        {checkinAt
+          ? dayjs(checkinAt).format(DATE_TIME_FORMAT.DD_MM_YYYY_HH_MM_SS)
+          : '-'}
+      </Text>
+    ),
   };
   const STATUS_COLUMN: ColumnType<Ticket> = {
     title: 'Trạng thái',

@@ -1,36 +1,58 @@
-import ReactEcharts from 'echarts-for-react';
+import { Flex, Typography } from 'antd';
+import EChartsReact from 'echarts-for-react';
+
+const { Text } = Typography;
 
 export const BusesOfCompanyWidget = () => {
   const option = {
-    xAxis: {
-      type: 'category',
-      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+    tooltip: {
+      trigger: 'item',
     },
-    yAxis: {
-      type: 'value',
+    legend: {
+      x: 'center',
+      y: 'bottom',
+      orient: 'horizontal',
     },
     series: [
       {
-        data: [120, 200, 150, 80, 70, 110, 130],
-        type: 'bar',
-        barWidth: 40,
-        label: {
-          show: true,
-          fontSize: 14,
-        },
-        tooltip: {
-          position: ['50%', '50%'],
-        },
+        type: 'pie',
+        radius: ['40%', '70%'],
+        avoidLabelOverlap: true,
+        center: ['50%', '40%'],
+        padAngle: 5,
         itemStyle: {
-          color: '#d84f57',
-          borderRadius: [5, 5, 0, 0],
+          borderRadius: 10,
         },
+        label: {
+          show: false,
+          position: 'center',
+        },
+        emphasis: {
+          label: {
+            show: false,
+          },
+        },
+        labelLine: {
+          show: false,
+        },
+        data: [
+          { value: 4, name: 'Phương Trang' },
+          { value: 2, name: 'Hoàng Long' },
+          { value: 1, name: 'Bảo Cúc' },
+          { value: 1, name: 'Minh Tâm' },
+          { value: 4, name: 'Thành Bưởi' },
+          { value: 1, name: 'Sơn Tùng' },
+          { value: 1, name: 'Kính Diên Hồng' },
+        ],
       },
     ],
   };
   return (
-    <div className="rounded-xl border border-solid border-gray-200">
-      <ReactEcharts option={option} />
-    </div>
+    <Flex vertical>
+      <Text className="p-1 text-2xl font-bold">Tổng số phương tiện</Text>
+      <div className="rounded-xl border border-solid border-gray-200">
+        <EChartsReact option={option} className="h-full" />
+      </div>
+    </Flex>
   );
 };

@@ -110,6 +110,7 @@ export const SearchTourForm = () => {
               isLoading={isLoading}
               provinces={provinces}
               setQuery={setQuery}
+              showSearch
             />
           </Item>
           <Item className="w-full" name="endPoint">
@@ -117,6 +118,7 @@ export const SearchTourForm = () => {
               isLoading={isLoading}
               provinces={provinces}
               setQuery={setQuery}
+              showSearch
             />
           </Item>
           <Tooltip title={disabled ? 'Vui lòng điền đủ thông tin!' : null}>

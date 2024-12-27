@@ -2,7 +2,10 @@ import { useEffect, useRef, useState } from 'react';
 import { BrowserMultiFormatReader } from '@zxing/library';
 import { Button, Divider, Flex, Spin, Typography } from 'antd';
 import { useGetTicketDetails } from '@/features/qr-scanner/hooks/useGetTicketDetails';
-import type { Ticket } from '@/shared/types';
+import { TicketStatus, type Ticket } from '@/shared/types';
+import { formatCurrency } from '@/shared/utils';
+import { HiMiniCamera } from 'react-icons/hi2';
+import { useTicketStatus } from '@/features/qr-scanner/hooks/useTicketStatus';
 
 const { Text } = Typography;
 
@@ -15,18 +18,36 @@ const QRCodeScanner = () => {
     undefined,
   );
 
+  const { isLoading, handleSetTicketStatus } = useTicketStatus();
+  const [rescan, setRescan] = useState(true);
+
+  const onClick = async (status: TicketStatus) => {
+    await handleSetTicketStatus(status, ticketDetails as Ticket);
+    setTicketDetails(undefined);
+    setRescan(true);
+    setQrResult(null);
+  };
+
   useEffect(() => {
+    let codeReader: BrowserMultiFormatReader | null = null;
+    let activeStream: MediaStream | null = null;
     const stopCamera = () => {
-      const stream = videoRef.current?.srcObject as MediaStream;
-      stream?.getTracks().forEach((track) => track.stop());
+      if (codeReader) {
+        codeReader.reset();
+      }
+      if (activeStream) {
+        activeStream.getTracks().forEach((track) => track.stop());
+      }
     };
     const startCamera = async () => {
       try {
         const stream = await navigator.mediaDevices.getUserMedia({
           video: {
-            facingMode: 'environment',
+            facingMode: 'environment', // Use rear camera
           },
         });
+
+        activeStream = stream;
 
         if (videoRef.current) {
           videoRef.current.srcObject = stream;
@@ -34,49 +55,67 @@ const QRCodeScanner = () => {
           await videoRef.current.play();
         }
 
-        const codeReader = new BrowserMultiFormatReader();
+        codeReader = new BrowserMultiFormatReader();
         codeReader.decodeFromVideoDevice(
           null,
           videoRef.current,
           (result, error) => {
             if (result) {
-              setQrResult(result.getText()); // QR code successfully scanned
-              stopCamera(); // Stop the camera after scanning
+              setQrResult(result.getText());
+              stopCamera();
+              setRescan(false);
               handleGetTicketDetails(result?.getText()).then((data) =>
                 setTicketDetails(data),
               );
-            }
-            if (error) {
+            } else if (error) {
               setError('Scanning...');
             }
           },
         );
-      } catch (error) {
-        console.error(error);
-        setError(`Error accessing camera`);
+      } catch (err) {
+        setError(`Error accessing camera: ${(err as Error).message}`);
       }
     };
 
-    startCamera();
+    if (rescan) {
+      startCamera();
+    }
 
     return () => {
       stopCamera();
     };
-  }, [handleGetTicketDetails]);
+  }, [handleGetTicketDetails, rescan]);
 
   return (
-    <Flex vertical justify="center" align="center" className="w-full" gap={16}>
-      <h1 className="mt-6 text-center font-bold">Checkin Vé Xe</h1>
-      <video
-        ref={videoRef}
-        className="mx-auto size-80 rounded-lg border border-solid border-gray-200 py-1"
-      >
-        <track default kind="captions" srcLang="en" src="SUBTITLE_PATH" />
-      </video>
+    <Flex
+      vertical
+      justify="center"
+      align="center"
+      className="mb-6 w-full"
+      gap={16}
+    >
+      <div className="mx-auto mt-4 flex size-60 items-center justify-center rounded-lg border border-dashed border-gray-400 bg-gray-100 p-4">
+        {rescan ? (
+          <video ref={videoRef} className="size-full object-cover">
+            <track default kind="captions" srcLang="en" src="SUBTITLE_PATH" />
+          </video>
+        ) : (
+          <HiMiniCamera
+            className="size-20"
+            onClick={() => {
+              setRescan(true);
+              setTicketDetails(undefined);
+            }}
+          />
+        )}
+      </div>
+
       {qrResult ? (
         <Flex vertical justify="center" align="center">
-          <h2 className="font-bold">Mã vé xe:</h2>
-          <p className="text-center text-[#c35959]">{qrResult}</p>
+          <h2 className="text-xl font-bold">Mã vé xe:</h2>
+          <p className="w-[65%] text-center font-bold text-[#c35959]">
+            {qrResult}
+          </p>
         </Flex>
       ) : null}
       {error && !qrResult ? (
@@ -85,7 +124,6 @@ const QRCodeScanner = () => {
         </Flex>
       ) : null}
 
-      {/* Ticket Information */}
       {isLoadingDetails ? (
         <Spin spinning />
       ) : (
@@ -112,15 +150,34 @@ const QRCodeScanner = () => {
                 <Flex justify="space-between">
                   <Text className="text-base font-bold">Giá vé</Text>
                   <Text className="text-base font-bold underline">
-                    {ticketDetails?.price}
+                    {formatCurrency(ticketDetails?.price || 0)} VND
                   </Text>
                 </Flex>
               </Flex>
-              <Flex justify="center" align="center" gap={10}>
-                <Button size="large" type="primary">
+              <Flex
+                justify="center"
+                align="center"
+                gap={10}
+                className="w-[90%]"
+              >
+                <Button
+                  size="large"
+                  type="primary"
+                  className="flex-1 px-6 py-4"
+                  onClick={() => onClick(TicketStatus.Checkin)}
+                  loading={isLoading}
+                >
                   Checkin
                 </Button>
-                <Button size="large">Huỷ vé</Button>
+
+                <Button
+                  size="large"
+                  className="flex-1 px-6 py-4"
+                  loading={isLoading}
+                  onClick={() => onClick(TicketStatus.Cancelled)}
+                >
+                  Huỷ vé
+                </Button>
               </Flex>
             </>
           ) : null}

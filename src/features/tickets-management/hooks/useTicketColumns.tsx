@@ -9,9 +9,18 @@ const { Text } = Typography;
 
 type Props = {
   handleOpenQRCodeModal: (selectedTicket: Ticket) => void;
+  handleSetTicketStatus?: (
+    status: TicketStatus,
+    selectedTicket?: Ticket,
+  ) => void;
+  isLoading?: boolean;
 };
 
-export const useTicketColumns = ({ handleOpenQRCodeModal }: Props) => {
+export const useTicketColumns = ({
+  handleOpenQRCodeModal,
+  handleSetTicketStatus,
+  isLoading,
+}: Props) => {
   const TOUR_COLUMN: ColumnType<Ticket> = {
     title: 'Lộ Trình',
     dataIndex: 'tours',
@@ -56,7 +65,8 @@ export const useTicketColumns = ({ handleOpenQRCodeModal }: Props) => {
       <Text className="font-bold">{formatCurrency(Number(price))} VND</Text>
     ),
   };
-  const CODE: ColumnType<Ticket> = {
+  const CODE_COLUMN: ColumnType<Ticket> = {
+    width: 220,
     title: 'Code',
     dataIndex: 'code',
     ellipsis: true,
@@ -108,8 +118,21 @@ export const useTicketColumns = ({ handleOpenQRCodeModal }: Props) => {
 
       return (
         <Flex gap={6}>
-          <Button disabled={canCancelTicket}>Huỷ vé</Button>
-          <Button hidden={!canFinishTicket} type="primary">
+          <Button
+            loading={isLoading}
+            disabled={canCancelTicket}
+            onClick={() =>
+              handleSetTicketStatus?.(TicketStatus.Cancelled, record)
+            }
+          >
+            Huỷ vé
+          </Button>
+          <Button
+            loading={isLoading}
+            hidden={!canFinishTicket}
+            type="primary"
+            onClick={() => handleSetTicketStatus?.(TicketStatus.Finish, record)}
+          >
             Hoàn thành
           </Button>
         </Flex>
@@ -123,7 +146,7 @@ export const useTicketColumns = ({ handleOpenQRCodeModal }: Props) => {
     CLIENT_EMAIL_COLUMN,
     CLIENT_PHONE_COLUMN,
     PRICE_COLUMN,
-    CODE,
+    CODE_COLUMN,
     CHECKIN_AT_COLUMN,
     STATUS_COLUMN,
     ACTIONS_COLUMN,
